@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.8.34322.80
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AnimeDesktop", "AnimeDesktop\AnimeDesktop.csproj", "{B6C21A86-4908-4CC4-A574-76383E0E85D8}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B6C21A86-4908-4CC4-A574-76383E0E85D8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B6C21A86-4908-4CC4-A574-76383E0E85D8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B6C21A86-4908-4CC4-A574-76383E0E85D8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B6C21A86-4908-4CC4-A574-76383E0E85D8}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {F3A92C19-311E-4A3D-954B-0A05E97D587F}
+	EndGlobalSection
+EndGlobal
