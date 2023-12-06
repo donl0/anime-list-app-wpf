@@ -9,16 +9,22 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Resources\Pictures\bookmark_green.png" />
+    <None Remove="Resources\Pictures\bookmark_yellow.png" />
     <None Remove="Resources\Pictures\burger_icon.png" />
     <None Remove="Resources\Pictures\folder_icon.png" />
+    <None Remove="Resources\Pictures\gurren_laggan.jpg" />
     <None Remove="Resources\Pictures\header_bg.png" />
     <None Remove="Resources\Pictures\search_icon.png" />
     <None Remove="Resources\Pictures\slidan.jpg" />
   </ItemGroup>
 
   <ItemGroup>
+    <Resource Include="Resources\Pictures\bookmark_green.png" />
+    <Resource Include="Resources\Pictures\bookmark_yellow.png" />
     <Resource Include="Resources\Pictures\burger_icon.png" />
     <Resource Include="Resources\Pictures\folder_icon.png" />
+    <Resource Include="Resources\Pictures\gurren_laggan.jpg" />
     <Resource Include="Resources\Pictures\header_bg.png" />
     <Resource Include="Resources\Pictures\search_icon.png" />
     <Resource Include="Resources\Pictures\slidan.jpg" />
