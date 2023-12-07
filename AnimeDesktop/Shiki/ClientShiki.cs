@@ -1,10 +1,5 @@
 ﻿using ShikimoriSharp;
 using ShikimoriSharp.Bases;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace AnimeDesktop.Shiki
 {
@@ -14,7 +9,7 @@ namespace AnimeDesktop.Shiki
         const string ClientID = "ZEv-jFeYK_wdHhI8KY86_OcfKma66hy80aQ91MOICs4";
         const string ClientSecret = "Im_G_ndXFnnMtzIBKydYW9b3UsRSZU7Lfa6oUmzyzKI";
 
-        private static ShikimoriClient? Instance;
+        public static ShikimoriClient Instance { get; private set; }
 
         public static void Init() {
             if (Instance == null)
@@ -25,7 +20,5 @@ namespace AnimeDesktop.Shiki
 
            throw new InvalidOperationException("Singleton instance is already created.");
         }
-
-
     }
 }
