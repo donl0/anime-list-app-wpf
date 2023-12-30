@@ -17,10 +17,9 @@ namespace AnimeDesktop.Model
 
             });
 
-            var anime = search;
-            List<Anime> anime1 = anime.ToList();
+            List<Anime> anime = search.ToList();
 
-            return anime1;
+            return anime;
         }
     }
 }

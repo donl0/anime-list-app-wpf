@@ -4,6 +4,8 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:AnimeDesktop.View"
+             xmlns:viewModel="clr-namespace:AnimeDesktop.ViewModel"
+
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
@@ -22,7 +24,7 @@
                                 <RowDefinition Height="360px"></RowDefinition>
                             </Grid.RowDefinitions>
 
-                            <Button Grid.Column="0" Height="300px" VerticalAlignment="Top" Grid.ColumnSpan="2" BorderBrush="Transparent">
+                            <Button Grid.Column="0" Height="300px" VerticalAlignment="Top" Grid.ColumnSpan="2" BorderBrush="Transparent" Command="{Binding DataContext.OpenAnime, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type ItemsControl}}}" CommandParameter="{Binding DataContext, RelativeSource={RelativeSource Self}}">
                                 <Image Source="{Binding Image.Preview}"/>
                             </Button>
 
