@@ -1,0 +1,88 @@
+﻿<Window x:Class="AnimeDesktop.View.CertainAnimeView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:AnimeDesktop.View" xmlns:viewmodel="clr-namespace:AnimeDesktop.ViewModel"
+        mc:Ignorable="d"
+        Title="CertainAnimeView" Height="540" Width="900">
+
+    
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="250px"></ColumnDefinition>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+            <ColumnDefinition Width="150px"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+
+        </Grid.RowDefinitions>
+        
+        <Grid Grid.Column="0" Grid.Row="0" Grid.RowSpan="2" HorizontalAlignment="Left" VerticalAlignment="Top">
+            <StackPanel Orientation="Vertical">
+
+                <Image Source="{Binding Value.Result.Image}" Height="350px" Width="250px"/>
+
+                <TextBlock HorizontalAlignment="Center" Grid.ColumnSpan="2" FontWeight="Bold" FontSize="16" Text="{Binding Value.Result.Name}" TextWrapping="Wrap" TextTrimming="WordEllipsis"></TextBlock>
+
+                <StackPanel Height="132" Background="#FFB05F" Margin="8" VerticalAlignment="Top">
+                    <Grid Background="#FF8100" Height="30px" Margin="6,3,6,1">
+                        <TextBlock Text="+List" FontWeight="Bold" FontSize="25" HorizontalAlignment="Center"></TextBlock>
+                    </Grid>
+
+                    <Button Height="30px" Background="#FF8100" BorderBrush="Transparent" Margin="6,1,6,1">
+                        <TextBlock Text="Watched" FontWeight="Bold" FontSize="22"/>
+                    </Button>
+                    <Button Height="30px" Background="#FF8100" BorderBrush="Transparent" Margin="6,1,6,1">
+                        <TextBlock Text="Abandoned" FontWeight="Bold" FontSize="22"/>
+                    </Button>
+                    <Button Height="30px" Background="#FF8100" BorderBrush="Transparent" Margin="6,1,6,1">
+                        <TextBlock Text="Watched" FontWeight="Bold" FontSize="22"/>
+                    </Button>
+                </StackPanel>
+            </StackPanel>
+        </Grid>
+        <Grid Grid.Column="1">
+            <StackPanel Orientation="Vertical" Margin="5,0,5,0">
+                <Grid Background="#FF8100" Height="30px">
+                    <TextBlock Text="Info" FontWeight="Bold" FontSize="22" HorizontalAlignment="Center"></TextBlock>
+                </Grid>
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Text="Episodes: " FontWeight="Bold" FontSize="19" HorizontalAlignment="Center"></TextBlock>
+                    <TextBlock Text="{Binding Value.Result.Episodes}" FontWeight="Bold" FontSize="18" HorizontalAlignment="Center"></TextBlock>
+                </StackPanel>
+                <WrapPanel Orientation="Horizontal" Margin="0,10,0,0">
+                    <TextBlock Text="Genres: " FontWeight="Bold" FontSize="19" HorizontalAlignment="Left"></TextBlock>
+                    <TextBlock Text="{Binding Value.Result.Genres}" FontWeight="Bold" FontSize="18" HorizontalAlignment="Center" TextWrapping="Wrap"></TextBlock>
+                </WrapPanel>
+            </StackPanel>
+ 
+            
+        </Grid>
+        <Grid Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2" VerticalAlignment="Top" Margin="5,60,5,0">
+            <StackPanel Orientation="Vertical">
+                <Grid Background="#FF8100" Height="30px">
+                    <TextBlock Text="Description" FontWeight="Bold" FontSize="22" HorizontalAlignment="Center"></TextBlock>
+                </Grid>
+
+                <TextBlock Text="{Binding Value.Result.Description}" FontWeight="Bold" FontSize="18" HorizontalAlignment="Left" TextWrapping="Wrap"></TextBlock>
+            </StackPanel>
+        </Grid>
+
+        <Grid Grid.Column="3" Grid.Row="0">
+            <StackPanel Orientation="Vertical">
+                <Grid Background="#FF8100" Height="30px">
+                    <TextBlock Text="Rating" FontWeight="Bold" FontSize="22" HorizontalAlignment="Center"></TextBlock>
+                </Grid>
+
+                <Grid>
+                    <TextBlock Text="{Binding Value.Result.Rating}" FontWeight="Bold" FontSize="18" HorizontalAlignment="Center"></TextBlock>
+                </Grid>
+            </StackPanel>
+            
+        </Grid>
+    </Grid>
+</Window>
