@@ -24,77 +24,7 @@
                 </Rectangle>
 
                 <Grid Grid.Row="1">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="140px" x:Name="Header_Iame"></ColumnDefinition>
-                        <ColumnDefinition Width="120px" x:Name="Site_Name"></ColumnDefinition>
-                        <ColumnDefinition Width="170px" x:Name="TOP_Column"></ColumnDefinition>
-                        <ColumnDefinition Width="309px" x:Name="Search_Column"></ColumnDefinition>
-                        <ColumnDefinition Width="*" x:Name="User_Column"></ColumnDefinition>
-
-                    </Grid.ColumnDefinitions>
-
-                    <Border BorderBrush="Black" BorderThickness="0,5,0,5" Grid.ColumnSpan="5" x:Name="Background_Header">
-                        <Rectangle Height="82" Fill="#FFA701"/>
-                    </Border>
-
-                    <Image Source="..\Resources\Pictures\burger_icon.png" Grid.Column="0"
-Width="133" Height="130" Margin="0,-50,0,0"/>
-
-                    <TextBlock  FontSize="30" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold" Grid.Column="1">
-                    Burger
-                    <LineBreak></LineBreak>
-                    Anime
-                    </TextBlock>
-
-                    <Border BorderBrush="Black" BorderThickness="0,5,0,5" Grid.Column="2">
-                        <Button Width="180px" Background="#FF8100" BorderBrush="Transparent">
-                            <TextBlock Text="Top 100" FontWeight="Bold" FontSize="40"/>
-                        </Button>
-                    </Border>
-
-                    <StackPanel Grid.Column="3" Orientation="Horizontal">
-
-                        <Border Margin="10,0,0,0" BorderBrush="Black" BorderThickness="0,5,0,5" >
-                            <Button Width="80px" Background="#FF8100" BorderBrush="Transparent">
-                                <Image Source="..\Resources\Pictures\search_icon.png"/>
-                            </Button>
-
-                        </Border>
-
-                        <Border BorderBrush="Black" BorderThickness="0,5,0,5">
-                            <Grid Background="#FF8100">
-                                <Border BorderBrush="Black" BorderThickness="2" CornerRadius="6" Margin="0,20,10,20" Background="White">
-                                    <TextBox Width="190px" Margin="2" BorderBrush="Transparent" BorderThickness="0"/>
-                                </Border>
-                            </Grid>
-                        </Border>
-                    </StackPanel>
-
-                    <Grid Grid.Column="4" HorizontalAlignment="Right">
-                        <StackPanel Orientation="Horizontal" >
-
-                            <Border BorderBrush="Black" BorderThickness="0,5,0,5"  Margin="10,0,0,0">
-                                <Button Width="auto" Background="#FF8100" BorderBrush="Transparent">
-                                    <Image Source="..\Resources\Pictures\folder_icon.png" Margin="20,0,20,0"/>
-                                </Button>
-
-                            </Border>
-
-                            <Border BorderBrush="Black" BorderThickness="0,5,0,5">
-                                <Grid Background="#FF8100">
-                                    <Image Source="..\Resources\Pictures\slidan.jpg" Width="70" Height="70"  Margin="10,0,10,0">
-                                        <Image.OpacityMask>
-                                            <VisualBrush Stretch="Fill">
-                                                <VisualBrush.Visual>
-                                                    <Ellipse Width="100" Height="100" Fill="White" />
-                                                </VisualBrush.Visual>
-                                            </VisualBrush>
-                                        </Image.OpacityMask>
-                                    </Image>
-                                </Grid>
-                            </Border>
-                        </StackPanel>
-                    </Grid>
+                    <view:HeaderNavigationControl/>
                 </Grid>
 
                 <Grid Grid.Row="2">

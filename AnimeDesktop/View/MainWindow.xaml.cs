@@ -8,8 +8,7 @@ namespace AnimeDesktop
         public MainWindow()
         {
             InitializeComponent();
-            /*            TopHundredViewModel startViewModel = new TopHundredViewModel();
-            */
+
             MainWindowViewModel viewModel = new MainWindowViewModel();
             DataContext = viewModel;
         }
