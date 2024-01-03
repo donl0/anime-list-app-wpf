@@ -1,6 +1,6 @@
 ﻿using ShikimoriSharp.Classes;
 
-namespace AnimeDesktop.Shiki
+namespace AnimeDesktop.Servises.DSRuler
 {
     public interface IShikiImageRuler
     {

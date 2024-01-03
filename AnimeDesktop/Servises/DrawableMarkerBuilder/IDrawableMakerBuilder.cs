@@ -1,7 +1,7 @@
 ﻿using AnimeDesktop.DataStructure;
 using ShikimoriSharp.Classes;
 
-namespace AnimeDesktop.Extensions
+namespace AnimeDesktop.Servises.DrawableMarkerBuilder
 {
     public interface IDrawableMakerBuilder
     {

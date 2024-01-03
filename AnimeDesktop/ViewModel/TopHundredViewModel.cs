@@ -3,6 +3,7 @@ using AnimeDesktop.Shiki;
 using ShikimoriSharp.Classes;
 using ShikimoriSharp;
 using AnimeDesktop.Commands;
+using AnimeDesktop.Servises.DSRuler;
 
 namespace AnimeDesktop.ViewModel
 {

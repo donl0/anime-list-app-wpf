@@ -1,4 +1,4 @@
-﻿using AnimeDesktop.Extensions;
+﻿using AnimeDesktop.Servises.DrawableMarkerBuilder;
 using AnimeDesktop.View;
 using AnimeDesktop.ViewModel;
 using ShikimoriSharp.Classes;

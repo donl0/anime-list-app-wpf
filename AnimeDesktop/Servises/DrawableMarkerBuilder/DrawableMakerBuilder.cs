@@ -4,7 +4,7 @@ using AnimeDesktop.Shiki;
 using ShikimoriSharp;
 using ShikimoriSharp.Classes;
 
-namespace AnimeDesktop.Extensions
+namespace AnimeDesktop.Servises.DrawableMarkerBuilder
 {
     public class DrawableMakerBuilder : IDrawableMakerBuilder
     {

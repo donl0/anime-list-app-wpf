@@ -1,8 +1,9 @@
 ﻿using AnimeDesktop.Commands;
-using AnimeDesktop.Extensions;
 using AnimeDesktop.Model;
 using AnimeDesktop.Model.Bookmarks;
 using AnimeDesktop.Navigation;
+using AnimeDesktop.Servises.DrawableMarkerBuilder;
+using AnimeDesktop.Servises.DSRuler;
 using AnimeDesktop.Shiki;
 using AnimeDesktop.View;
 using AnimeDesktop.ViewModel;
