@@ -1,27 +1,32 @@
 ﻿using AnimeDesktop.DataStructure;
 using AnimeDesktop.Model;
+using AnimeDesktop.Shiki;
+using ShikimoriSharp;
 using ShikimoriSharp.Classes;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace AnimeDesktop.Extensions
 {
-    public static class DrawableMaker
+    public class DrawableMakerBuilder : IDrawableMakerBuilder
     {
-        public static async Task<AnimeDrawable> ToDrawable(this Anime anime) {
-            IAnimeIDModel animeIDModel = new AnimeIDModel();
+        private BasePayloadedModel<AnimeID, ClientShiki, ShikimoriClient, long> _animeIDModel;
 
-            AnimeID animeID = await animeIDModel.TakeAnime(anime.Id);
+        public DrawableMakerBuilder(BasePayloadedModel<AnimeID, ClientShiki, ShikimoriClient, long> animeIDModel)
+        {
+            _animeIDModel = animeIDModel;
+        }
+
+        public async Task<AnimeDrawable> ToDrawable(Anime anime)
+        {
+
+            AnimeID animeID = await _animeIDModel.TakeData(anime.Id);
 
             AnimeDrawable drawable = new AnimeDrawable(animeID.Name, ToGenresString(animeID.Genres), animeID.Description, anime.Image.Preview, animeID.Episodes, animeID.Score);
 
             return drawable;
         }
 
-        private static string ToGenresString(Genre[] genres) {
+        private string ToGenresString(Genre[] genres)
+        {
             string genresString = "";
             string splitter = " ,";
 

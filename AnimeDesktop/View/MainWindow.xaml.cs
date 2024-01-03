@@ -1,4 +1,5 @@
-﻿using AnimeDesktop.ViewModel;
+﻿using AnimeDesktop.Navigation;
+using AnimeDesktop.ViewModel;
 using System.Windows;
 
 namespace AnimeDesktop
@@ -8,9 +9,6 @@ namespace AnimeDesktop
         public MainWindow()
         {
             InitializeComponent();
-
-            MainWindowViewModel viewModel = new MainWindowViewModel();
-            DataContext = viewModel;
         }
     }
 }

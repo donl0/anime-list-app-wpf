@@ -2,7 +2,7 @@
 
 namespace AnimeDesktop.Shiki
 {
-    internal interface IShikiImageRuler
+    public interface IShikiImageRuler
     {
         public void Rule(List<Anime> animes);
     }

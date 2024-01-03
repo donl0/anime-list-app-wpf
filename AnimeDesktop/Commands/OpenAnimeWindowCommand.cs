@@ -1,15 +1,19 @@
-﻿using AnimeDesktop.View;
+﻿using AnimeDesktop.Extensions;
+using AnimeDesktop.View;
+using AnimeDesktop.ViewModel;
 using ShikimoriSharp.Classes;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace AnimeDesktop.Commands
 {
-    class OpenAnimeWindowCommand : BaseCommand
+    public class OpenAnimeWindowCommand : BaseCommand
     {
+        private IDrawableMakerBuilder _builder;
+
+        public OpenAnimeWindowCommand(IDrawableMakerBuilder builder)
+        {
+            _builder = builder;
+        }
+
         public override bool CanExecute(object? parameter)
         {
             return parameter is Anime;
@@ -19,9 +23,12 @@ namespace AnimeDesktop.Commands
         {
             Anime selectedItem = parameter as Anime;
 
-            CertainAnimeView animeView = new CertainAnimeView(selectedItem);
-
-            animeView.Show();
+             CertainAnimeViewModel viewModel = new CertainAnimeViewModel(_builder, selectedItem);
+             CertainAnimeView view = new CertainAnimeView()
+             {
+                 DataContext = viewModel
+             };
+             view.Show();
         }
     }
 }

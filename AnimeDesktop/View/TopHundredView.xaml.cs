@@ -8,9 +8,6 @@ namespace AnimeDesktop.View
         public TopHundredView()
         {
             InitializeComponent();
-            var topHundredViewModel = new TopHundredViewModel();
-
-            DataContext = topHundredViewModel;
         }
     }
 }

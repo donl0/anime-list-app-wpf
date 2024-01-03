@@ -3,7 +3,9 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:AnimeDesktop" xmlns:viewmodel="clr-namespace:AnimeDesktop.ViewModel" xmlns:view="clr-namespace:AnimeDesktop.View"
+        xmlns:local="clr-namespace:AnimeDesktop" 
+        xmlns:viewmodels="clr-namespace:AnimeDesktop.ViewModel"
+        xmlns:view="clr-namespace:AnimeDesktop.View"
         mc:Ignorable="d"
         Title="MainWindow" Height="900" Width="1440">
 
@@ -35,7 +37,17 @@
                     </Grid.ColumnDefinitions>
                 
                 </Grid>
-                <view:TopHundredView Grid.Row="2"/>
+                <ContentControl Content="{Binding CurrentViewModel}" Grid.Row="2">
+                    <ContentControl.Resources>
+                        <DataTemplate DataType="{x:Type viewmodels:TopHundredViewModel}">
+                            <view:TopHundredView/>
+                        </DataTemplate>
+                        <DataTemplate DataType="{x:Type viewmodels:UserBookmarksViewModel}">
+                            <view:UserBookmarksControl/>
+                        </DataTemplate>
+                    </ContentControl.Resources>
+                </ContentControl>
+                
             </Grid>
         </ScrollViewer>
     </Grid>

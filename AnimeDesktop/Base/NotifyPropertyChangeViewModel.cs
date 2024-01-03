@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace AnimeDesktop.Base
 {
-    class NotifyPropertyChangeViewModel
+    public class NotifyPropertyChangeViewModel
     {
         public event PropertyChangedEventHandler PropertyChanged;
         protected virtual void OnPropertyChanged([CallerMemberName]string prop = "")
