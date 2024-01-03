@@ -2,8 +2,8 @@
 
 namespace AnimeDesktop.Servises.DSRuler
 {
-    public interface IShikiImageRuler
+    public interface IShikiRuler<T>
     {
-        public void Rule(List<Anime> animes);
+        public void Rule(T ds);
     }
 }

@@ -9,7 +9,7 @@ namespace AnimeDesktop.ViewModel
 {
     class UserBookmarksViewModel : BaseAnimeListViewModel
     {
-        public UserBookmarksViewModel(BaseModel<List<Anime>, ClientShiki, ShikimoriClient> startModel, OpenAnimeWindowCommand openAnime, IShikiImageRuler imageRuler) : base(startModel, openAnime, imageRuler)
+        public UserBookmarksViewModel(BaseModel<List<Anime>, ClientShiki, ShikimoriClient> startModel, OpenAnimeWindowCommand openAnime, IShikiRuler<List<Anime>> imageRuler) : base(startModel, openAnime, imageRuler)
         {
         }
     }

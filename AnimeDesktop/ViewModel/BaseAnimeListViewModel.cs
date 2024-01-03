@@ -9,12 +9,12 @@ namespace AnimeDesktop.ViewModel
 {
     public class BaseAnimeListViewModel
     {
-        private readonly IShikiImageRuler _imageRuler;
+        private readonly IShikiRuler<List<Anime>> _imageRuler;
 
         public NotifyTaskCompletion<List<Anime>> Values { get; private set; }
         public ICommand OpenAnime { get; }
 
-        public BaseAnimeListViewModel(BaseModel<List<Anime>, ClientShiki, ShikimoriClient> startModel, ICommand openAnime, IShikiImageRuler imageRuler) {
+        public BaseAnimeListViewModel(BaseModel<List<Anime>, ClientShiki, ShikimoriClient> startModel, ICommand openAnime, IShikiRuler<List<Anime>> imageRuler) {
             OpenAnime = openAnime;
 
             _imageRuler = imageRuler;

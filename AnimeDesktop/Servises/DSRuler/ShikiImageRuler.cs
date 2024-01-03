@@ -1,8 +1,9 @@
 ﻿using ShikimoriSharp.Classes;
+using ShikimoriSharp.Information;
 
-namespace AnimeDesktop.Shiki
+namespace AnimeDesktop.Servises.DSRuler
 {
-    class ShikiImageRuler : IShikiImageRuler
+    class ShikiImageRuler : IShikiRuler<List<Anime>>
     {
         public void Rule(List<Anime> animes)
         {

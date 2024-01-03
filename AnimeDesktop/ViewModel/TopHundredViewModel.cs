@@ -9,7 +9,7 @@ namespace AnimeDesktop.ViewModel
 {
     public class TopHundredViewModel : BaseAnimeListViewModel
     {
-        public TopHundredViewModel(BaseModel<List<Anime>, ClientShiki, ShikimoriClient> startModel, OpenAnimeWindowCommand openAnime, IShikiImageRuler imageRuler) : base(startModel, openAnime, imageRuler)
+        public TopHundredViewModel(BaseModel<List<Anime>, ClientShiki, ShikimoriClient> startModel, OpenAnimeWindowCommand openAnime, IShikiRuler<List<Anime>> imageRuler) : base(startModel, openAnime, imageRuler)
         {
         }
     }

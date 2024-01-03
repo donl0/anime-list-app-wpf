@@ -40,7 +40,7 @@ namespace AnimeDesktop.Init
 
                 services.AddSingleton<INavigationStore, NavigationStore>();
                 services.AddSingleton<ClientShiki>();
-                services.AddSingleton<IShikiImageRuler, ShikiImageRuler>();
+                services.AddSingleton<IShikiRuler<List<Anime>>, ShikiImageRuler>();
 
                 services.AddSingleton<IDrawableMakerBuilder, DrawableMakerBuilder>(s => new DrawableMakerBuilder(s.GetRequiredService<AnimeIDModel>()));
 
