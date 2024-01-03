@@ -4,6 +4,7 @@ using AnimeDesktop.Model.Bookmarks;
 using AnimeDesktop.Navigation;
 using AnimeDesktop.Servises.DrawableMarkerBuilder;
 using AnimeDesktop.Servises.DSRuler;
+using AnimeDesktop.Servises.DSRuler.Description;
 using AnimeDesktop.Shiki;
 using AnimeDesktop.View;
 using AnimeDesktop.ViewModel;
@@ -41,6 +42,7 @@ namespace AnimeDesktop.Init
                 services.AddSingleton<INavigationStore, NavigationStore>();
                 services.AddSingleton<ClientShiki>();
                 services.AddSingleton<IShikiRuler<List<Anime>>, ShikiImageRuler>();
+                services.AddSingleton<ShikiDescriptionRulerDirector>();
 
                 services.AddSingleton<IDrawableMakerBuilder, DrawableMakerBuilder>(s => new DrawableMakerBuilder(s.GetRequiredService<AnimeIDModel>()));
 

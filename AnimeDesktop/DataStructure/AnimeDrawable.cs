@@ -11,7 +11,7 @@ namespace AnimeDesktop.DataStructure
     {
         public string Name { get; }
         public string Genres { get; }
-        public string Description { get; }
+        public string Description { get; set; }
         public string Rating { get; }
         public string Image { get; }
         public long Episodes { get; }
