@@ -1,18 +1,18 @@
 ﻿using AnimeDesktop.Shiki;
+using ShikimoriSharp;
 using ShikimoriSharp.Classes;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace AnimeDesktop.Model
 {
-    class AnimeIDModel : IAnimeIDModel
+    class AnimeIDModel : BasePayloadedModel<AnimeID, ClientShiki, ShikimoriClient, long>
     {
-        public async Task<AnimeID> TakeAnime(long id)
+        public AnimeIDModel(ClientShiki client) : base(client)
         {
-            var client = ClientShiki.Instance;
+        }
+
+        public async override Task<AnimeID> TakeData(long id)
+        {
+            var client = Client.Instance;
 
             var anime = await client.Animes.GetAnime(id);
 

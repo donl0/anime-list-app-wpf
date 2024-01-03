@@ -1,16 +1,21 @@
 ﻿using AnimeDesktop.Shiki;
+using ShikimoriSharp;
 using ShikimoriSharp.Classes;
 using ShikimoriSharp.Settings;
 
 namespace AnimeDesktop.Model
 {
-    internal class TopHundredModel : IAnimeListModel
+    internal class TopHundredModel : BaseModel<List<Anime>, ClientShiki, ShikimoriClient>
     {
-        public async Task<List<Anime>> TakeAnimes()
+        public TopHundredModel(ClientShiki client) : base(client)
         {
-            var client = ClientShiki.Instance;
+        }
 
-            var search = await client.Animes.GetAnime(new AnimeRequestSettings
+        public async override Task<List<Anime>> TakeData()
+        {
+            var clientInstance = Client.Instance;
+
+            var search = await clientInstance.Animes.GetAnime(new AnimeRequestSettings
             {
                 order = ShikimoriSharp.Enums.Order.ranked,
                 limit = 100
