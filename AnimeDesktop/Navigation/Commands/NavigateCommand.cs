@@ -1,12 +1,21 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using AnimeDesktop.Commands;
+using AnimeDesktop.Servises;
+using AnimeDesktop.ViewModel;
 
 namespace AnimeDesktop.Navigation.Commands
 {
-    internal class NavigateCommand
+    public class NavigateCommand<TViewModel> : BaseCommand where TViewModel: BaseAnimeListViewModel
     {
+        private readonly NavigationService<TViewModel> _navigationService;
+
+        public NavigateCommand(INavigationStore navigationStore, NavigationService<TViewModel> navigationService)
+        {
+            _navigationService = navigationService;
+        }
+
+        public override void Execute(object? parameter)
+        {
+            _navigationService.Navigate();
+        }
     }
 }
