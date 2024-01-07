@@ -1,5 +1,4 @@
-﻿using AnimeDesktop.ViewModel;
-using System.Windows.Controls;
+﻿using System.Windows.Controls;
 
 namespace AnimeDesktop.View
 {

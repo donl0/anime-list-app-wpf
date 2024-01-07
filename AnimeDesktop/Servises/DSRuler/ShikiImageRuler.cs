@@ -3,7 +3,7 @@ using ShikimoriSharp.Information;
 
 namespace AnimeDesktop.Servises.DSRuler
 {
-    class ShikiImageRuler : IShikiRuler<List<Anime>>
+    public class ShikiImageRuler : IShikiRuler<List<Anime>>
     {
         public void Rule(List<Anime> animes)
         {

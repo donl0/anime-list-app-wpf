@@ -1,5 +1,10 @@
 ﻿using AnimeDesktop.Base;
+using AnimeDesktop.Init;
 using AnimeDesktop.Navigation;
+using AnimeDesktop.View;
+using Microsoft.Extensions.DependencyInjection;
+using ShikimoriSharp.Classes;
+using System.Windows.Controls;
 
 namespace AnimeDesktop.ViewModel
 {
@@ -13,6 +18,7 @@ namespace AnimeDesktop.ViewModel
             _navigationStore = navigation;
 
             _navigationStore.CurrentViewModelChanged += OnNavigationChanged;
+
         }
 
         private void OnNavigationChanged()
