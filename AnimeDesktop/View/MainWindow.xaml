@@ -5,11 +5,15 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:AnimeDesktop" 
         xmlns:viewmodels="clr-namespace:AnimeDesktop.ViewModel"
-        xmlns:view="clr-namespace:AnimeDesktop.View"
+        xmlns:view="clr-namespace:AnimeDesktop.View" xmlns:localDI="clr-namespace:AnimeDesktop.Init.DI"
         mc:Ignorable="d"
-        Title="MainWindow" Height="900" Width="1440">
+        Title="MainWindow" Height="900" Width="1440"
+        xmlns:diag="clr-namespace:System.Diagnostics;assembly=WindowsBase">
 
-    
+    <ContentControl.Resources>
+        <localDI:DIInitter x:Key="DataContextContainer"/>
+    </ContentControl.Resources>
+
     <Grid>
         <ScrollViewer VerticalScrollBarVisibility="Auto">
 
@@ -37,13 +41,17 @@
                     </Grid.ColumnDefinitions>
                 
                 </Grid>
+
                 <ContentControl Content="{Binding CurrentViewModel}" Grid.Row="2">
                     <ContentControl.Resources>
+                        <DataTemplate DataType="{x:Type viewmodels:UserBookmarksViewModel}">
+                            <view:UserBookmarksControl/>
+                        </DataTemplate>
                         <DataTemplate DataType="{x:Type viewmodels:TopHundredViewModel}">
                             <view:TopHundredView/>
                         </DataTemplate>
-                        <DataTemplate DataType="{x:Type viewmodels:UserBookmarksViewModel}">
-                            <view:UserBookmarksControl/>
+                        <DataTemplate DataType="{x:Type viewmodels:SearchAnimesViewModel}">
+                            <view:SearchAnimesView/>
                         </DataTemplate>
                     </ContentControl.Resources>
                 </ContentControl>

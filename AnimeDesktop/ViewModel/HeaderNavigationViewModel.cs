@@ -1,16 +1,19 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Input;
+﻿using AnimeDesktop.Commands;
+using AnimeDesktop.Navigation.Commands;
 
 namespace AnimeDesktop.ViewModel
 {
-    class HeaderNavigationViewModel
+    public class HeaderNavigationViewModel
     {
-        public ICommand NavigateTopAnimes { get; }
-        public ICommand NavigateSearch { get; }
-        public ICommand NavigateBookmarks { get; }
+        public NavigateCommand<TopHundredViewModel> NavigateTopAnimes { get; }
+        public NavigateCommand<UserBookmarksViewModel> NavigateBookmarks { get; }
+        public SearchAnimeCommand<SearchAnimesViewModel> NavigateSearch { get; }
+
+        public HeaderNavigationViewModel(NavigateCommand<TopHundredViewModel> navigateTopAnimes, NavigateCommand<UserBookmarksViewModel> navigateBookmarks, SearchAnimeCommand<SearchAnimesViewModel> navigationSearch)
+        {
+            NavigateTopAnimes = navigateTopAnimes;
+            NavigateBookmarks = navigateBookmarks;
+            NavigateSearch = navigationSearch;
+        }
     }
 }
