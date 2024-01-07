@@ -1,6 +1,4 @@
-﻿using AnimeDesktop.Servises.DrawableMarkerBuilder;
-using AnimeDesktop.Servises.DSRuler.Description;
-using AnimeDesktop.View;
+﻿using AnimeDesktop.View;
 using AnimeDesktop.ViewModel;
 using ShikimoriSharp.Classes;
 
@@ -8,13 +6,14 @@ namespace AnimeDesktop.Commands
 {
     public class OpenAnimeWindowCommand : BaseCommand
     {
-        private readonly ShikiDescriptionRulerDirector _descriptionRuler;
-        private readonly IDrawableMakerBuilder _builder;
+        private readonly ICertainAnimeViewModel _animeViewModel;
+        private readonly CertainAnimeView _animeView;
 
-        public OpenAnimeWindowCommand(IDrawableMakerBuilder builder, ShikiDescriptionRulerDirector descriptionRuler)
+
+        public OpenAnimeWindowCommand(CertainAnimeView animeView, ICertainAnimeViewModel animeViewModel)
         {
-            _descriptionRuler = descriptionRuler;
-            _builder = builder;
+            _animeView = animeView;
+            _animeViewModel = animeViewModel;
         }
 
         public override bool CanExecute(object? parameter)
@@ -26,12 +25,13 @@ namespace AnimeDesktop.Commands
         {
             Anime selectedItem = parameter as Anime;
 
-             CertainAnimeViewModel viewModel = new CertainAnimeViewModel(_builder, selectedItem, _descriptionRuler);
-             CertainAnimeView view = new CertainAnimeView()
-             {
-                 DataContext = viewModel
-             };
-             view.Show();
+            /*CertainAnimeViewModel viewModel = new CertainAnimeViewModel(_builder, selectedItem, _descriptionRuler);
+            CertainAnimeView view = new CertainAnimeView()
+            {
+                DataContext = viewModel
+            };*/
+            _animeViewModel.Render(selectedItem);
+            _animeView.Show();
         }
     }
 }

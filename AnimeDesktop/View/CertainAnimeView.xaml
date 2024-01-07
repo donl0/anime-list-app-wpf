@@ -5,7 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:AnimeDesktop.View" xmlns:viewmodel="clr-namespace:AnimeDesktop.ViewModel"
         mc:Ignorable="d"
-        Title="CertainAnimeView" Height="540" Width="900">
+        Title="CertainAnimeView" Height="540" Width="900"
+        Topmost="True">
 
     
     <Grid>
@@ -52,7 +53,7 @@
                 </Grid>
                 <StackPanel Orientation="Horizontal">
                     <TextBlock Text="Episodes: " FontWeight="Bold" FontSize="19" HorizontalAlignment="Center"></TextBlock>
-                    <TextBlock Text="{Binding Value.Result.Episodes}" FontWeight="Bold" FontSize="18" HorizontalAlignment="Center"></TextBlock>
+                    <TextBlock  Text="{Binding Value.Result.Episodes}" FontWeight="Bold" FontSize="18" HorizontalAlignment="Center"></TextBlock>
                 </StackPanel>
                 <WrapPanel Orientation="Horizontal" Margin="0,10,0,0">
                     <TextBlock Text="Genres: " FontWeight="Bold" FontSize="19" HorizontalAlignment="Left"></TextBlock>
