@@ -1,4 +1,5 @@
 ﻿using AnimeDesktop.Init;
+using AnimeDesktop.Init.DI;
 using AnimeDesktop.Navigation;
 using AnimeDesktop.Shiki;
 using AnimeDesktop.ViewModel;
@@ -9,7 +10,7 @@ namespace AnimeDesktop
 {
     public partial class App : Application
     {
-        private IInitter<IServiceProvider> _diInitter;
+        private IInitter _diInitter;
 
         protected override void OnStartup(StartupEventArgs e)
         {
@@ -28,7 +29,7 @@ namespace AnimeDesktop
         }
 
         private void StartFirstWindow() {
-            MainWindow = _diInitter.Instance.GetRequiredService<MainWindow>();
+            MainWindow = DIInitter.MainWindow;
 
             MainWindow.Show();
         }

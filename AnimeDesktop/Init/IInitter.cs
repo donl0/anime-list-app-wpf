@@ -1,9 +1,7 @@
 ﻿namespace AnimeDesktop.Init
 {
-    internal interface IInitter<TInstance>
+    internal interface IInitter
     {
-        public TInstance Instance { get; }
-
         public void Init();
         public void Deactivate();
     }
