@@ -10,7 +10,7 @@
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
         <Grid Grid.Column="1" Background="#DCDCDC" HorizontalAlignment="Center">
-            <ItemsControl x:Name="Animes_List" ItemsSource="{Binding Values.Result}" DataContext="{Binding DataContext, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type local:TopHundredView}}}">
+            <ItemsControl x:Name="Animes_List" ItemsSource="{Binding Values.Result}">
                 <ItemsControl.ItemTemplate>
                     <DataTemplate>
                         <Grid Height="360px" Width="218" Margin="5, 5, 30, 5">
