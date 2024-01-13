@@ -1,14 +1,13 @@
-﻿using ShikimoriSharp;
+﻿using AnimeDesktop.Base;
+using Microsoft.Extensions.Configuration;
+using ShikimoriSharp;
 using ShikimoriSharp.Bases;
+using System.IO;
 
 namespace AnimeDesktop.Shiki
 {
     public class ClientShiki : IClient<ShikimoriClient>
     {
-        const string ClientName = "Anime Burger";
-        const string ClientID = "ZEv-jFeYK_wdHhI8KY86_OcfKma66hy80aQ91MOICs4";
-        const string ClientSecret = "Im_G_ndXFnnMtzIBKydYW9b3UsRSZU7Lfa6oUmzyzKI";
-
         public ShikimoriClient Instance { get; private set; }
 
         public ClientShiki() {
@@ -18,13 +17,38 @@ namespace AnimeDesktop.Shiki
         private void Init() {
             if (Instance == null)
             {
-                Instance = new ShikimoriClient(null, new ClientSettings(ClientName, ClientID, ClientSecret));
+                TakeConnectionInfo(out string name, out string id, out string secter);
+
+                Instance = new ShikimoriClient(null, 
+                    new ClientSettings(
+                     name,
+                     id,
+                     secter));
+
                 return;
             }
 
             string errorMessage = "Instance is already created.";
 
            throw new InvalidOperationException(errorMessage);
+        }
+
+        private void TakeConnectionInfo(out string name, out string id, out string secret) {
+            string shikiFolder = "Shiki"; ;
+            string secretFile = "shikisecrets.json";
+
+            string configPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "..", "..", "..", shikiFolder, secretFile);
+            IConfigurationRoot configuration = new ConfigurationBuilder()
+                .AddJsonFile(configPath)
+                .Build();
+
+            string nameNaming = "ClientName";
+            string idNaming = "ClientID";
+            string secretNaming = "ClientSecret";
+
+            name = configuration.GetConnectionString(nameNaming);
+            id = configuration.GetConnectionString(idNaming);
+            secret = configuration.GetConnectionString(secretNaming);
         }
     }
 }
