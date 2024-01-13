@@ -5,7 +5,7 @@ using ShikimoriSharp.Settings;
 
 namespace AnimeDesktop.Model.Bookmarks
 {
-    class UserPlannedQuery : BaseTakeDataQuery<List<Anime>, ShikimoriClient>
+    public class UserPlannedQuery : BaseTakeDataQuery<List<Anime>, ShikimoriClient>
     {
         public UserPlannedQuery(IClient<ShikimoriClient> client) : base(client)
         {

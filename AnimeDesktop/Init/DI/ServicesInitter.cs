@@ -6,6 +6,7 @@ using AnimeDesktop.ViewModel;
 using Microsoft.Extensions.DependencyInjection;
 using AnimeDesktop.Servises.DrawableMarkerBuilder;
 using AnimeDesktop.Model.Navigation;
+using ShikimoriSharp.Classes;
 
 namespace AnimeDesktop.Init.DI
 {
@@ -19,6 +20,8 @@ namespace AnimeDesktop.Init.DI
             services.AddSingleton<INavigationStore, NavigationStore>(s => new NavigationStore(s.GetRequiredService<TopHundredViewModel>()));
             
             services.AddTransient<ShikiImageRuler>();
+            services.AddTransient<IShikiRuler<List<Anime>>, ShikiImageRuler>(s => s.GetRequiredService<ShikiImageRuler>());
+
             services.AddSingleton<ShikiDescriptionRulerDirector>();
 
             services.AddTransient<IDrawableMakerBuilder, DrawableMakerBuilder>(s => new DrawableMakerBuilder(s.GetRequiredService<AnimeIDQuery>()));

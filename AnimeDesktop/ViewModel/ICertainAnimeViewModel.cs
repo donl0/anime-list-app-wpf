@@ -1,7 +1,4 @@
-﻿using AnimeDesktop.DataStructure;
-using AnimeDesktop.Servises.DrawableMarkerBuilder;
-using AnimeDesktop.Servises.DSRuler;
-using ShikimoriSharp.Classes;
+﻿using ShikimoriSharp.Classes;
 
 namespace AnimeDesktop.ViewModel
 {

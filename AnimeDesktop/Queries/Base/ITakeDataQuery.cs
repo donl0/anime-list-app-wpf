@@ -1,6 +1,6 @@
 ﻿namespace AnimeDesktop.Model
 {
-    internal interface ITakeDataQuery<T>
+    public interface ITakeDataQuery<T>
     {
         public Task<T> TakeData();
     }

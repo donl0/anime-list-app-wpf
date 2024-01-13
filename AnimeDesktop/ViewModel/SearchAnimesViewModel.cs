@@ -10,7 +10,7 @@ namespace AnimeDesktop.ViewModel
 {
     public class SearchAnimesViewModel: BaseAnimeListViewModel, ISearchModel
     {
-        private readonly AnimeWithNameQuery _model;
+        private readonly AnimeWithNameQuery _querry;
 
         private string _searchText;
 
@@ -18,9 +18,9 @@ namespace AnimeDesktop.ViewModel
 
         public ICommand TestCommand { get; }
 
-        public SearchAnimesViewModel(UserWatchedQuery startModel, OpenAnimeWindowCommand openAnime, ShikiImageRuler imageRuler, AnimeWithNameQuery model) : base(startModel, openAnime, imageRuler)
+        public SearchAnimesViewModel(UserWatchedQuery startQuerry, OpenAnimeWindowCommand openAnime, ShikiImageRuler imageRuler, AnimeWithNameQuery querry) : base(startQuerry, openAnime, imageRuler)
         {
-            _model = model;
+            _querry = querry;
             SearchTextUpdated += OnSearchTextUpdated;
         }
 
@@ -32,12 +32,12 @@ namespace AnimeDesktop.ViewModel
 
         private void OnSearchTextUpdated()
         {
-            UpdateWithModel(_model, _searchText);
+            UpdateWithQuerry(_querry, _searchText);
         }
 
-        protected override void UpdateWithModel<String>(BaseTakeDataClientPayloaded<List<Anime>, ShikimoriClient, String> model, String payload)
+        protected override void UpdateWithQuerry<String>(ITakeDataQueryPayloaded<List<Anime>, String> querry, String payload)
         {
-            base.UpdateWithModel(model, payload);
+            base.UpdateWithQuerry(querry, payload);
         }
     }
 }

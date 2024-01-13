@@ -18,11 +18,7 @@ namespace AnimeDesktop.Init.DI
 
             services.AddSingleton<MainWindowViewModel>();
 
-            services.AddSingleton(s => new UserBookmarksViewModel(
-                s.GetRequiredService<UserWatchedQuery>(),
-                s.GetRequiredService<OpenAnimeWindowCommand>(),
-                s.GetRequiredService<ShikiImageRuler>()
-                ));
+            services.AddSingleton<UserBookmarksViewModel>();
 
             services.AddSingleton<HeaderNavigationViewModel>();
 

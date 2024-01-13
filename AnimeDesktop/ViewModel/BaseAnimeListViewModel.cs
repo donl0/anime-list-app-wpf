@@ -11,29 +11,29 @@ namespace AnimeDesktop.ViewModel
     {
         private readonly IShikiRuler<List<Anime>> _imageRuler;
 
-        public NotifyTaskCompletion<List<Anime>> Values { get; protected set; }
+        public NotifyTaskCompletion<List<Anime>> Values { get; private set; }
         public ICommand OpenAnime { get; }
 
-        public BaseAnimeListViewModel(BaseTakeDataQuery<List<Anime>, ShikimoriClient> startModel, ICommand openAnime, IShikiRuler<List<Anime>> imageRuler) {
+        public BaseAnimeListViewModel(ITakeDataQuery<List<Anime>> startQuerry, ICommand openAnime, IShikiRuler<List<Anime>> imageRuler) {
             OpenAnime = openAnime;
 
             _imageRuler = imageRuler;
 
-            UpdateWithModel(startModel);
+            UpdateWithQuerry(startQuerry);
         }
 
-        protected void UpdateWithModel(BaseTakeDataQuery<List<Anime>, ShikimoriClient> model) {
-            Update(model.TakeData());
+        protected void UpdateWithQuerry(ITakeDataQuery<List<Anime>> querry) {
+            Update(querry.TakeData());
         }
 
-        protected virtual void UpdateWithModel<TP>(BaseTakeDataClientPayloaded<List<Anime>, ShikimoriClient, TP> model, TP payload)  {
-            Update(model.TakeData(payload));
+        protected virtual void UpdateWithQuerry<TP>(ITakeDataQueryPayloaded<List<Anime>, TP> querry, TP payload)  {
+            Update(querry.TakeData(payload));
         }
 
-        private void Update(Task<List<Anime>> modelTakenData) {
+        private void Update(Task<List<Anime>> querryTakenData) {
             Action<List<Anime>> onTaskCompleted = (animes) => _imageRuler.Rule(animes);
 
-            Values = new NotifyTaskCompletion<List<Anime>>(Task.Run(() => modelTakenData), onTaskCompleted);
+            Values = new NotifyTaskCompletion<List<Anime>>(Task.Run(() => querryTakenData), onTaskCompleted);
         }
     }
 }
