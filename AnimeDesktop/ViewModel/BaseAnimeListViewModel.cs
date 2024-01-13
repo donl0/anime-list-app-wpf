@@ -1,7 +1,6 @@
 ﻿using AnimeDesktop.Base;
 using AnimeDesktop.Model;
 using AnimeDesktop.Servises.DSRuler;
-using AnimeDesktop.Shiki;
 using ShikimoriSharp;
 using ShikimoriSharp.Classes;
 using System.Windows.Input;
@@ -15,7 +14,7 @@ namespace AnimeDesktop.ViewModel
         public NotifyTaskCompletion<List<Anime>> Values { get; protected set; }
         public ICommand OpenAnime { get; }
 
-        public BaseAnimeListViewModel(BaseModel<List<Anime>, ClientShiki, ShikimoriClient> startModel, ICommand openAnime, IShikiRuler<List<Anime>> imageRuler) {
+        public BaseAnimeListViewModel(BaseTakeDataQuery<List<Anime>, ShikimoriClient> startModel, ICommand openAnime, IShikiRuler<List<Anime>> imageRuler) {
             OpenAnime = openAnime;
 
             _imageRuler = imageRuler;
@@ -23,11 +22,11 @@ namespace AnimeDesktop.ViewModel
             UpdateWithModel(startModel);
         }
 
-        protected void UpdateWithModel(BaseModel<List<Anime>, ClientShiki, ShikimoriClient> model) {
+        protected void UpdateWithModel(BaseTakeDataQuery<List<Anime>, ShikimoriClient> model) {
             Update(model.TakeData());
         }
 
-        protected virtual void UpdateWithModel<TP>(BasePayloadedModel<List<Anime>, ClientShiki, ShikimoriClient, TP> model, TP payload)  {
+        protected virtual void UpdateWithModel<TP>(BaseTakeDataClientPayloaded<List<Anime>, ShikimoriClient, TP> model, TP payload)  {
             Update(model.TakeData(payload));
         }
 

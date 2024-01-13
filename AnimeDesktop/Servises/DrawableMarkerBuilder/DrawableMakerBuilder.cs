@@ -8,9 +8,9 @@ namespace AnimeDesktop.Servises.DrawableMarkerBuilder
 {
     public class DrawableMakerBuilder : IDrawableMakerBuilder
     {
-        private BasePayloadedModel<AnimeID, ClientShiki, ShikimoriClient, long> _animeIDModel;
+        private BaseTakeDataClientPayloaded<AnimeID, ShikimoriClient, long> _animeIDModel;
 
-        public DrawableMakerBuilder(BasePayloadedModel<AnimeID, ClientShiki, ShikimoriClient, long> animeIDModel)
+        public DrawableMakerBuilder(BaseTakeDataClientPayloaded<AnimeID, ShikimoriClient, long> animeIDModel)
         {
             _animeIDModel = animeIDModel;
         }
@@ -20,7 +20,7 @@ namespace AnimeDesktop.Servises.DrawableMarkerBuilder
 
             AnimeID animeID = await _animeIDModel.TakeData(anime.Id);
 
-            AnimeDrawable drawable = new AnimeDrawable(animeID.Name, ToGenresString(animeID.Genres), animeID.Description, anime.Image.Preview, animeID.Episodes, animeID.Score);
+            AnimeDrawable drawable = new AnimeDrawable(anime.Id, animeID.Name, ToGenresString(animeID.Genres), animeID.Description, anime.Image.Preview, animeID.Episodes, animeID.Score);
 
             return drawable;
         }

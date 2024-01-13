@@ -1,5 +1,5 @@
-﻿using AnimeDesktop.Commands;
-using AnimeDesktop.Navigation.Commands;
+﻿using AnimeDesktop.Model.Commands;
+using AnimeDesktop.Model.Navigation.Commands;
 
 namespace AnimeDesktop.ViewModel
 {

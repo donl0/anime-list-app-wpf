@@ -1,6 +1,4 @@
-﻿using AnimeDesktop.Navigation;
-using AnimeDesktop.ViewModel;
-using System.Windows;
+﻿using System.Windows;
 
 namespace AnimeDesktop
 {

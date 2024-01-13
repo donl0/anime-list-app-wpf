@@ -1,14 +1,8 @@
-﻿using ShikimoriSharp.Bases;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace AnimeDesktop.DataStructure
+﻿namespace AnimeDesktop.DataStructure
 {
     public class AnimeDrawable
     {
+        public long Id { get; }
         public string Name { get; }
         public string Genres { get; }
         public string Description { get; set; }
@@ -16,8 +10,9 @@ namespace AnimeDesktop.DataStructure
         public string Image { get; }
         public long Episodes { get; }
 
-        public AnimeDrawable(string name, string genres, string description, string image, long episodes, string rating)
+        public AnimeDrawable(long id, string name, string genres, string description, string image, long episodes, string rating)
         {
+            Id = id;
             Name = name;
             Genres = genres;
             Description = description;

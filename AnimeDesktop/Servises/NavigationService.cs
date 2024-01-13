@@ -1,4 +1,4 @@
-﻿using AnimeDesktop.Navigation;
+﻿using AnimeDesktop.Model.Navigation;
 using AnimeDesktop.ViewModel;
 
 namespace AnimeDesktop.Servises

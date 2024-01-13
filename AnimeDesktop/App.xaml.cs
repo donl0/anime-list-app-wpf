@@ -1,9 +1,5 @@
 ﻿using AnimeDesktop.Init;
 using AnimeDesktop.Init.DI;
-using AnimeDesktop.Navigation;
-using AnimeDesktop.Shiki;
-using AnimeDesktop.ViewModel;
-using Microsoft.Extensions.DependencyInjection;
 using System.Windows;
 
 namespace AnimeDesktop
@@ -24,7 +20,6 @@ namespace AnimeDesktop
 
         protected override async void OnExit(ExitEventArgs e)
         {
-            _diInitter.Deactivate();
             base.OnExit(e);
         }
 

@@ -10,7 +10,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 namespace AnimeDesktop.Migrations
 {
-    [DbContext(typeof(Context))]
+    [DbContext(typeof(DBClient))]
     [Migration("20240110150205_InitialCreate")]
     partial class InitialCreate
     {

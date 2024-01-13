@@ -1,5 +1,5 @@
-﻿using AnimeDesktop.Commands;
-using AnimeDesktop.Model;
+﻿using AnimeDesktop.Model;
+using AnimeDesktop.Model.Commands;
 using AnimeDesktop.Servises.DSRuler;
 using AnimeDesktop.Shiki;
 using ShikimoriSharp;
@@ -10,8 +10,7 @@ namespace AnimeDesktop.ViewModel
 {
     public class SearchAnimesViewModel: BaseAnimeListViewModel, ISearchModel
     {
-        private readonly AnimeWithNameModel _model;
-        private readonly ShikiImageRuler _imageRuler;
+        private readonly AnimeWithNameQuery _model;
 
         private string _searchText;
 
@@ -19,9 +18,8 @@ namespace AnimeDesktop.ViewModel
 
         public ICommand TestCommand { get; }
 
-        public SearchAnimesViewModel(UserWatchedModel startModel, OpenAnimeWindowCommand openAnime, ShikiImageRuler imageRuler, AnimeWithNameModel model) : base(startModel, openAnime, imageRuler)
+        public SearchAnimesViewModel(UserWatchedQuery startModel, OpenAnimeWindowCommand openAnime, ShikiImageRuler imageRuler, AnimeWithNameQuery model) : base(startModel, openAnime, imageRuler)
         {
-            _imageRuler = imageRuler;
             _model = model;
             SearchTextUpdated += OnSearchTextUpdated;
         }
@@ -37,7 +35,7 @@ namespace AnimeDesktop.ViewModel
             UpdateWithModel(_model, _searchText);
         }
 
-        protected override void UpdateWithModel<String>(BasePayloadedModel<List<Anime>, ClientShiki, ShikimoriClient, String> model, String payload)
+        protected override void UpdateWithModel<String>(BaseTakeDataClientPayloaded<List<Anime>, ShikimoriClient, String> model, String payload)
         {
             base.UpdateWithModel(model, payload);
         }

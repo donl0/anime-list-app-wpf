@@ -15,17 +15,23 @@
     <Grid>
         <Grid>
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="10*"></ColumnDefinition>
+                <ColumnDefinition Width="*"></ColumnDefinition>
                 <ColumnDefinition Width="808px"></ColumnDefinition>
                 <ColumnDefinition Width="*"></ColumnDefinition>
             </Grid.ColumnDefinitions>
 
             <local:AnimeListControl DataContext="{Binding UserBookmarksDataContext, Source={StaticResource DataContextContainer}}" Grid.Column="1"/>
 
-            <StackPanel Grid.Column="0">
-                <Button Height="40" Width="200"></Button>
-                <Button Height="40" Width="100"></Button>
-                <Button Height="40" Width="100"></Button>
+            <StackPanel Margin="0 40 0 0" Grid.Column="0">
+                <Button Height="60" Width="auto" Background="#FF8100">
+                    <TextBlock FontSize="40">Watched</TextBlock>
+                </Button>
+                <Button Margin="0 25 0 0" Height="60" Width="auto" Background="#FF8100">
+                    <TextBlock FontSize="40">Planned</TextBlock>
+                </Button>
+                <Button Margin="0 25 0 0" Height="60" Width="auto" Background="#FF8100">
+                    <TextBlock FontSize="40">Abandoned</TextBlock>
+                </Button>
             </StackPanel>
         </Grid>
     </Grid>

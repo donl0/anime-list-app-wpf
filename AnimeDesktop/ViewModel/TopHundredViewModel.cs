@@ -1,15 +1,14 @@
 ﻿using AnimeDesktop.Model;
-using AnimeDesktop.Shiki;
 using ShikimoriSharp.Classes;
 using ShikimoriSharp;
-using AnimeDesktop.Commands;
 using AnimeDesktop.Servises.DSRuler;
+using AnimeDesktop.Model.Commands;
 
 namespace AnimeDesktop.ViewModel
 {
     public class TopHundredViewModel : BaseAnimeListViewModel
     {
-        public TopHundredViewModel(BaseModel<List<Anime>, ClientShiki, ShikimoriClient> startModel, OpenAnimeWindowCommand openAnime, ShikiImageRuler imageRuler) : base(startModel, openAnime, imageRuler)
+        public TopHundredViewModel(BaseTakeDataQuery<List<Anime>, ShikimoriClient> startModel, OpenAnimeWindowCommand openAnime, ShikiImageRuler imageRuler) : base(startModel, openAnime, imageRuler)
         {
         }
     }
