@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 
-namespace AnimeDesktop.Commands
+namespace AnimeDesktop.Model.Commands
 {
     public abstract class BaseCommand : ICommand
     {

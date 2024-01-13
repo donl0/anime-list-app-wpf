@@ -1,6 +1,6 @@
 ﻿using AnimeDesktop.ViewModel;
 
-namespace AnimeDesktop.Navigation
+namespace AnimeDesktop.Model.Navigation
 {
     class NavigationStore : INavigationStore
     {

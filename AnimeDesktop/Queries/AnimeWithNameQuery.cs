@@ -5,15 +5,15 @@ using ShikimoriSharp.Settings;
 
 namespace AnimeDesktop.Model
 {
-    public class AnimeWithNameModel : BasePayloadedModel<List<Anime>, ClientShiki, ShikimoriClient, string>
+    public class AnimeWithNameQuery : BaseTakeDataClientPayloaded<List<Anime>, ShikimoriClient, string>
     {
-        public AnimeWithNameModel(ClientShiki client) : base(client)
+        public AnimeWithNameQuery(ClientShiki client) : base(client)
         {
         }
 
         public async override Task<List<Anime>> TakeData(string value)
         {
-            var clientInstance = Client.Instance;
+            var clientInstance = Client;
 
             var search = await clientInstance.Animes.GetAnime(new AnimeRequestSettings
             {

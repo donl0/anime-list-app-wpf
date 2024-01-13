@@ -1,9 +1,9 @@
 ﻿using ShikimoriSharp;
 
-namespace AnimeDesktop.Shiki
+namespace AnimeDesktop.Base
 {
     public interface IClient<T>
     {
-        public T Instance { get;}
+        public T Instance { get; }
     }
 }

@@ -2,9 +2,9 @@
 using AnimeDesktop.Servises;
 using AnimeDesktop.ViewModel;
 
-namespace AnimeDesktop.Commands
+namespace AnimeDesktop.Model.Commands
 {
-    public class SearchAnimeCommand<TVM> : BaseCommand where TVM: BaseAnimeListViewModel
+    public class SearchAnimeCommand<TVM> : BaseCommand where TVM : BaseAnimeListViewModel
     {
         private readonly NavigationService<TVM> _navigationService;
         private readonly ISearchModel _searchModel;

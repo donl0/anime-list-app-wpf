@@ -2,13 +2,12 @@
 using AnimeDesktop.ViewModel;
 using ShikimoriSharp.Classes;
 
-namespace AnimeDesktop.Commands
+namespace AnimeDesktop.Model.Commands
 {
     public class OpenAnimeWindowCommand : BaseCommand
     {
         private readonly ICertainAnimeViewModel _animeViewModel;
         private readonly CertainAnimeView _animeView;
-
 
         public OpenAnimeWindowCommand(CertainAnimeView animeView, ICertainAnimeViewModel animeViewModel)
         {
@@ -25,11 +24,6 @@ namespace AnimeDesktop.Commands
         {
             Anime selectedItem = parameter as Anime;
 
-            /*CertainAnimeViewModel viewModel = new CertainAnimeViewModel(_builder, selectedItem, _descriptionRuler);
-            CertainAnimeView view = new CertainAnimeView()
-            {
-                DataContext = viewModel
-            };*/
             _animeViewModel.Render(selectedItem);
             _animeView.Show();
         }
