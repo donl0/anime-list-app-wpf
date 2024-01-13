@@ -1,5 +1,4 @@
-﻿using AnimeDesktop.ViewModel;
-using Microsoft.Extensions.DependencyInjection;
+﻿using Microsoft.Extensions.DependencyInjection;
 
 namespace AnimeDesktop.Init.DI
 {
@@ -12,14 +11,10 @@ namespace AnimeDesktop.Init.DI
 
         public async void Init()
         {
-            InitServises();
+            InitServices();
         }
 
-        public async void Deactivate()
-        {
-        }
-
-        private void InitServises()
+        private void InitServices()
         {
             IServiceCollection services = new ServiceCollection();
 
@@ -27,9 +22,10 @@ namespace AnimeDesktop.Init.DI
             {
                 new ServicesInitter(),
                 new CommandsInitter(),
-                new ModelsInitter(),
+                new QueriesInitter(),
                 new ViewMolelsInitter(),
-                new ViewInitter()
+                new ViewInitter(),
+                new ClientInstanceInitter()
             };
 
             foreach (var container in dIContainers) {

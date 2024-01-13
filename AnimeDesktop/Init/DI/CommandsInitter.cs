@@ -1,7 +1,7 @@
-﻿using AnimeDesktop.Navigation.Commands;
-using AnimeDesktop.ViewModel;
+﻿using AnimeDesktop.ViewModel;
 using Microsoft.Extensions.DependencyInjection;
-using AnimeDesktop.Commands;
+using AnimeDesktop.Model.Commands;
+using AnimeDesktop.Model.Navigation.Commands;
 
 namespace AnimeDesktop.Init.DI
 {
@@ -9,14 +9,13 @@ namespace AnimeDesktop.Init.DI
     {
         public IServiceCollection Init(IServiceCollection services)
         {
+            services.AddTransient<NavigateCommand<TopHundredViewModel>, NavigateCommand<TopHundredViewModel>>();
+            services.AddTransient<NavigateCommand<UserBookmarksViewModel>, NavigateCommand<UserBookmarksViewModel>>();
+            services.AddTransient<NavigateCommand<SearchAnimesViewModel>, NavigateCommand<SearchAnimesViewModel>>();
 
-            services.AddSingleton<NavigateCommand<TopHundredViewModel>, NavigateCommand<TopHundredViewModel>>();
-            services.AddSingleton<NavigateCommand<UserBookmarksViewModel>, NavigateCommand<UserBookmarksViewModel>>();
-            services.AddSingleton<NavigateCommand<SearchAnimesViewModel>, NavigateCommand<SearchAnimesViewModel>>();
+            services.AddTransient<OpenAnimeWindowCommand>();
 
-            services.AddSingleton<OpenAnimeWindowCommand>();
-
-            services.AddSingleton<SearchAnimeCommand<SearchAnimesViewModel>, SearchAnimeCommand<SearchAnimesViewModel>>();
+            services.AddTransient<SearchAnimeCommand<SearchAnimesViewModel>, SearchAnimeCommand<SearchAnimesViewModel>>();
 
             return services;
         }

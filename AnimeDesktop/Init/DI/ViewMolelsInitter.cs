@@ -2,7 +2,7 @@
 using AnimeDesktop.Servises.DSRuler;
 using AnimeDesktop.ViewModel;
 using Microsoft.Extensions.DependencyInjection;
-using AnimeDesktop.Commands;
+using AnimeDesktop.Model.Commands;
 
 namespace AnimeDesktop.Init.DI
 {
@@ -11,7 +11,6 @@ namespace AnimeDesktop.Init.DI
         public IServiceCollection Init(IServiceCollection services)
         {
 
-            services.AddSingleton<AnimeWithNameModel>();
             services.AddSingleton<SearchAnimesViewModel>();
 
             services.AddSingleton<ISearchModel>(s => s.GetRequiredService<SearchAnimesViewModel>());
@@ -20,7 +19,7 @@ namespace AnimeDesktop.Init.DI
             services.AddSingleton<MainWindowViewModel>();
 
             services.AddSingleton(s => new UserBookmarksViewModel(
-                s.GetRequiredService<UserWatchedModel>(),
+                s.GetRequiredService<UserWatchedQuery>(),
                 s.GetRequiredService<OpenAnimeWindowCommand>(),
                 s.GetRequiredService<ShikiImageRuler>()
                 ));

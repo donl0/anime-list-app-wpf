@@ -1,28 +1,27 @@
 ﻿using AnimeDesktop.Model;
-using AnimeDesktop.Navigation;
 using AnimeDesktop.Servises;
 using AnimeDesktop.Servises.DSRuler.Description;
 using AnimeDesktop.Servises.DSRuler;
-using AnimeDesktop.Shiki;
 using AnimeDesktop.ViewModel;
 using Microsoft.Extensions.DependencyInjection;
 using AnimeDesktop.Servises.DrawableMarkerBuilder;
+using AnimeDesktop.Model.Navigation;
 
 namespace AnimeDesktop.Init.DI
 {
     public class ServicesInitter : IDIContainerInitter
     {
         public IServiceCollection Init(IServiceCollection services) {
-            services.AddSingleton<NavigationService<TopHundredViewModel>, NavigationService<TopHundredViewModel>>();
-            services.AddSingleton<NavigationService<UserBookmarksViewModel>, NavigationService<UserBookmarksViewModel>>();
-            services.AddSingleton<NavigationService<SearchAnimesViewModel>, NavigationService<SearchAnimesViewModel>>();
+            services.AddTransient<NavigationService<TopHundredViewModel>, NavigationService<TopHundredViewModel>>();
+            services.AddTransient<NavigationService<UserBookmarksViewModel>, NavigationService<UserBookmarksViewModel>>();
+            services.AddTransient<NavigationService<SearchAnimesViewModel>, NavigationService<SearchAnimesViewModel>>();
 
             services.AddSingleton<INavigationStore, NavigationStore>(s => new NavigationStore(s.GetRequiredService<TopHundredViewModel>()));
-            services.AddSingleton<ClientShiki>();
-            services.AddSingleton<ShikiImageRuler>();
+            
+            services.AddTransient<ShikiImageRuler>();
             services.AddSingleton<ShikiDescriptionRulerDirector>();
 
-            services.AddSingleton<IDrawableMakerBuilder, DrawableMakerBuilder>(s => new DrawableMakerBuilder(s.GetRequiredService<AnimeIDModel>()));
+            services.AddTransient<IDrawableMakerBuilder, DrawableMakerBuilder>(s => new DrawableMakerBuilder(s.GetRequiredService<AnimeIDQuery>()));
 
             return services;
         }
