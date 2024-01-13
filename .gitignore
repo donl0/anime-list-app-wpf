@@ -396,3 +396,5 @@ FodyWeavers.xsd
 
 # JetBrains Rider
 *.sln.iml
+AnimeDesktop/DB/appsecrets.json
+AnimeDesktop/Shiki/shikisecrets.json
