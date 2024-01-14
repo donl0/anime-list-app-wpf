@@ -1,10 +1,9 @@
 ﻿using AnimeDesktop.Model;
-using AnimeDesktop.Shiki;
 using Microsoft.Extensions.DependencyInjection;
-using ShikimoriSharp.Classes;
 using ShikimoriSharp;
 using AnimeDesktop.Model.Bookmarks;
 using AnimeDesktop.Queries.Bookmarks;
+using AnimeDesktop.DB.Model;
 
 namespace AnimeDesktop.Init.DI
 {
@@ -15,17 +14,19 @@ namespace AnimeDesktop.Init.DI
 
             services.AddTransient<AnimeWithNameQuery>();
 
-            services.AddTransient<BaseTakeDataQuery<List<Anime>, ShikimoriClient>, TopHundredQuery>(s => s.GetRequiredService<TopHundredQuery>());
+            services.AddTransient<BaseTakeDataQuery<List<ShikimoriSharp.Classes.Anime>, ShikimoriClient>, TopHundredQuery>(s => s.GetRequiredService<TopHundredQuery>());
 
             services.AddTransient<TopHundredQuery>();
 
-            services.AddTransient<ITakeDataQuery<List<Anime>>, TopHundredQuery>(s => s.GetRequiredService<TopHundredQuery>());
+            services.AddTransient<ITakeDataQuery<List<ShikimoriSharp.Classes.Anime>>, TopHundredQuery>(s => s.GetRequiredService<TopHundredQuery>());
 
             services.AddTransient<AnimeIDQuery>();
 
             services.AddTransient<UserPlannedQuery>();
             services.AddTransient<UserWatchedQuery>();
             services.AddTransient<UserAbandonedQuerry>();
+
+            services.AddTransient<IDataBaseQueries, DataBaseQueries>();
 
             return services;
         }
