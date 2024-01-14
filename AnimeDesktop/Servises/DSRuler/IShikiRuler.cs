@@ -1,6 +1,4 @@
-﻿using ShikimoriSharp.Classes;
-
-namespace AnimeDesktop.Servises.DSRuler
+﻿namespace AnimeDesktop.Servises.DSRuler
 {
     public interface IShikiRuler<T>
     {

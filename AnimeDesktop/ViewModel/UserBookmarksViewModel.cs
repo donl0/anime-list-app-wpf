@@ -6,7 +6,6 @@ using AnimeDesktop.Model.Commands;
 using AnimeDesktop.Model.Bookmarks;
 using AnimeDesktop.Queries.Bookmarks;
 using System.Windows.Input;
-using AnimeDesktop.Model.Commands.BookmarkModelUpdater;
 
 namespace AnimeDesktop.ViewModel
 {
@@ -28,14 +27,6 @@ namespace AnimeDesktop.ViewModel
             _abandonedQuery = abandonedQuerry;
         }
 
-        /*        public UserBookmarksViewModel(CommandsContainer commandsContainer,UserPlannedQuery plannedQuery, UserWatchedQuery watchedQuery, UserAbandonedQuerry abandonedQuerry, BaseTakeDataQuery<List<Anime>, ShikimoriClient> startQuerry, OpenAnimeWindowCommand openAnime, IShikiRuler<List<Anime>> imageRuler) : base(startQuerry, openAnime, imageRuler)
-                {
-
-                    _watchedQuery = watchedQuery;
-                    _plannedQuery = plannedQuery;
-                    _abandonedQuery = abandonedQuerry;
-                }
-        */
         public void UpdateToWatched()
         {
             UpdateWithQuerry(_watchedQuery);

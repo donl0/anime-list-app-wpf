@@ -39,7 +39,6 @@
                         <ColumnDefinition Width="808px"></ColumnDefinition>
                         <ColumnDefinition Width="*"></ColumnDefinition>
                     </Grid.ColumnDefinitions>
-                
                 </Grid>
 
                 <ContentControl Content="{Binding CurrentViewModel}" Grid.Row="2">

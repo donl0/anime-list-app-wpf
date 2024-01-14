@@ -1,5 +1,4 @@
 ﻿using ShikimoriSharp.Classes;
-using ShikimoriSharp.Information;
 
 namespace AnimeDesktop.Servises.DSRuler
 {

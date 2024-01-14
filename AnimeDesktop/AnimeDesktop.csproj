@@ -46,4 +46,8 @@
     <Resource Include="Resources\Pictures\slidan.jpg" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Migrations\" />
+  </ItemGroup>
+
 </Project>

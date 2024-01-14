@@ -1,6 +1,5 @@
 ﻿using AnimeDesktop.DataStructure;
 using AnimeDesktop.Model;
-using AnimeDesktop.Shiki;
 using ShikimoriSharp;
 using ShikimoriSharp.Classes;
 

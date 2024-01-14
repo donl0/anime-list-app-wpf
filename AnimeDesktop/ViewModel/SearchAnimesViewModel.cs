@@ -7,11 +7,12 @@ namespace AnimeDesktop.ViewModel
 {
     public class SearchAnimesViewModel: BaseAnimeListViewModel, ISearchModel
     {
+        private event Action SearchTextUpdated;
+
         private readonly AnimeWithNameQuery _querry;
 
         private string _searchText;
 
-        private event Action SearchTextUpdated;
 
         public SearchAnimesViewModel(UserWatchedQuery startQuerry, OpenAnimeWindowCommand openAnime, ShikiImageRuler imageRuler, AnimeWithNameQuery querry) : base(startQuerry, openAnime, imageRuler)
         {

@@ -1,5 +1,4 @@
 ﻿using AnimeDesktop.Model.Commands;
-using AnimeDesktop.Model.Navigation;
 using AnimeDesktop.Servises;
 using AnimeDesktop.ViewModel;
 

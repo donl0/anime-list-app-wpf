@@ -11,6 +11,7 @@ namespace AnimeDesktop.Init.DI
         static TopHundredViewModel TopHundredDataContext { get; }
         static UserBookmarksViewModel UserBookmarksDataContext { get; }
         static BookmarksCommandsContainer CommandsContainerContext { get; }
+
         public abstract void SetProvider(IServiceProvider serviceProvider);
     }
 }

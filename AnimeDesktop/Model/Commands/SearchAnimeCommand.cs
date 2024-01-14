@@ -1,5 +1,4 @@
-﻿using AnimeDesktop.Model;
-using AnimeDesktop.Servises;
+﻿using AnimeDesktop.Servises;
 using AnimeDesktop.ViewModel;
 
 namespace AnimeDesktop.Model.Commands

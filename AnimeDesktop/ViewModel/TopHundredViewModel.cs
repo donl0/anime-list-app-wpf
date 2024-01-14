@@ -1,6 +1,5 @@
 ﻿using AnimeDesktop.Model;
 using ShikimoriSharp.Classes;
-using ShikimoriSharp;
 using AnimeDesktop.Servises.DSRuler;
 using AnimeDesktop.Model.Commands;
 

@@ -4,9 +4,8 @@ namespace AnimeDesktop.Model.Navigation
 {
     class NavigationStore : INavigationStore
     {
-        public BaseAnimeListViewModel CurrentViewModel { get; private set; }
-
         public event Action CurrentViewModelChanged;
+        public BaseAnimeListViewModel CurrentViewModel { get; private set; }
 
         public NavigationStore(BaseAnimeListViewModel startView)
         {
