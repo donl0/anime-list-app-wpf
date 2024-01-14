@@ -3,6 +3,8 @@ using Microsoft.Extensions.DependencyInjection;
 using AnimeDesktop.Model.Commands;
 using AnimeDesktop.Model.Navigation.Commands;
 using AnimeDesktop.Model.Commands.BookmarkModelUpdater;
+using AnimeDesktop.DB.Model;
+using AnimeDesktop.Model.SymbolJob;
 
 namespace AnimeDesktop.Init.DI
 {
@@ -27,6 +29,9 @@ namespace AnimeDesktop.Init.DI
                 s.GetRequiredService<PlannedSetterCommand>(),
                 s.GetRequiredService<AbandonedSetterCommand>()
                 ));
+            services.AddTransient<SymbolBookmarkModel<AbandonedAnime>, SymbolBookmarkModel<AbandonedAnime>>();
+            services.AddTransient<SymbolBookmarkModel<WatchedAnime>, SymbolBookmarkModel<WatchedAnime>>();
+            services.AddTransient<SymbolBookmarkModel<PlannedAnime>, SymbolBookmarkModel<PlannedAnime>>();
 
             return services;
         }
