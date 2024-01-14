@@ -8,7 +8,8 @@
         Title="CertainAnimeView" Height="540" Width="900"
         Topmost="True">
 
-    
+
+
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="250px"></ColumnDefinition>
@@ -21,7 +22,7 @@
             <RowDefinition Height="*"></RowDefinition>
 
         </Grid.RowDefinitions>
-        
+
         <Grid Grid.Column="0" Grid.Row="0" Grid.RowSpan="2" HorizontalAlignment="Left" VerticalAlignment="Top">
             <StackPanel Orientation="Vertical">
 
@@ -34,14 +35,23 @@
                         <TextBlock Text="+List" FontWeight="Bold" FontSize="25" HorizontalAlignment="Center"></TextBlock>
                     </Grid>
 
-                    <Button Height="30px" Background="#FF8100" BorderBrush="Transparent" Margin="6,1,6,1">
-                        <TextBlock Text="Watched" FontWeight="Bold" FontSize="22"/>
+                    <Button Height="30px" Background="#FF8100" BorderBrush="Transparent" Margin="6,1,6,1"  Command="{Binding WatchedModel}" CommandParameter="{Binding Value.Result}">
+                        <TextBlock  FontWeight="Bold" FontSize="22">
+                        <Run Text="{Binding WatchedSymbol, Mode=OneWay}"></Run>
+                        <Run Text="Watched"></Run>
+                        </TextBlock>
                     </Button>
-                    <Button Height="30px" Background="#FF8100" BorderBrush="Transparent" Margin="6,1,6,1">
-                        <TextBlock Text="Abandoned" FontWeight="Bold" FontSize="22"/>
+                    <Button Height="30px" Background="#FF8100" BorderBrush="Transparent" Margin="6,1,6,1" Command="{Binding AbandonedModel}" CommandParameter="{Binding Value.Result}">
+                        <TextBlock  FontWeight="Bold" FontSize="22">
+                        <Run Text="{Binding AbandonedSymbol, Mode=OneWay}"></Run>
+                        <Run Text="Abandoned"></Run>
+                        </TextBlock>
                     </Button>
-                    <Button Height="30px" Background="#FF8100" BorderBrush="Transparent" Margin="6,1,6,1">
-                        <TextBlock Text="Watched" FontWeight="Bold" FontSize="22"/>
+                    <Button Height="30px" Background="#FF8100" BorderBrush="Transparent" Margin="6,1,6,1" Command="{Binding PlannedModel}" CommandParameter="{Binding Value.Result}">
+                        <TextBlock  FontWeight="Bold" FontSize="22">
+                        <Run Text="{Binding PlannedSmbol, Mode=OneWay}"></Run>
+                        <Run Text="Planned"></Run>
+                        </TextBlock>
                     </Button>
                 </StackPanel>
             </StackPanel>
@@ -60,8 +70,8 @@
                     <TextBlock Text="{Binding Value.Result.Genres}" FontWeight="Bold" FontSize="18" HorizontalAlignment="Center" TextWrapping="Wrap"></TextBlock>
                 </WrapPanel>
             </StackPanel>
- 
-            
+
+
         </Grid>
         <Grid Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2" VerticalAlignment="Top" Margin="5,60,5,0">
             <StackPanel Orientation="Vertical">
@@ -83,7 +93,7 @@
                     <TextBlock Text="{Binding Value.Result.Rating}" FontWeight="Bold" FontSize="18" HorizontalAlignment="Center"></TextBlock>
                 </Grid>
             </StackPanel>
-            
+
         </Grid>
     </Grid>
 </Window>
