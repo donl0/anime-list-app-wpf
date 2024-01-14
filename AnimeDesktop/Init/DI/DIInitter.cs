@@ -21,7 +21,7 @@ namespace AnimeDesktop.Init.DI
             IDIContainerInitter[] dIContainers = new IDIContainerInitter[]
             {
                 new ServicesInitter(),
-                new CommandsInitter(),
+                new ModelInitter(),
                 new QueriesInitter(),
                 new ViewMolelsInitter(),
                 new ViewInitter(),

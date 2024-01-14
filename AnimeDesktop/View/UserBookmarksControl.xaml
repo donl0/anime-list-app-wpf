@@ -22,14 +22,14 @@
 
             <local:AnimeListControl DataContext="{Binding UserBookmarksDataContext, Source={StaticResource DataContextContainer}}" Grid.Column="1"/>
 
-            <StackPanel Margin="0 40 0 0" Grid.Column="0">
-                <Button Height="60" Width="auto" Background="#FF8100">
+            <StackPanel Margin="0 40 0 0" Grid.Column="0" DataContext="{Binding CommandsContainerContext, Source={StaticResource DataContextContainer}}">
+                <Button Height="60" Width="auto" Background="#FF8100" Command="{Binding WatchedSetter}">
                     <TextBlock FontSize="40">Watched</TextBlock>
                 </Button>
-                <Button Margin="0 25 0 0" Height="60" Width="auto" Background="#FF8100">
+                <Button Margin="0 25 0 0" Height="60" Width="auto" Background="#FF8100" Command="{Binding PlannedSetter}">
                     <TextBlock FontSize="40">Planned</TextBlock>
                 </Button>
-                <Button Margin="0 25 0 0" Height="60" Width="auto" Background="#FF8100">
+                <Button Margin="0 25 0 0" Height="60" Width="auto" Background="#FF8100" Command="{Binding AbondonedSetter}">
                     <TextBlock FontSize="40">Abandoned</TextBlock>
                 </Button>
             </StackPanel>

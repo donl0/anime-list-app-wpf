@@ -18,7 +18,7 @@ namespace AnimeDesktop.Init.DI
             services.AddTransient<NavigationService<SearchAnimesViewModel>, NavigationService<SearchAnimesViewModel>>();
 
             services.AddSingleton<INavigationStore, NavigationStore>(s => new NavigationStore(s.GetRequiredService<TopHundredViewModel>()));
-            
+
             services.AddTransient<ShikiImageRuler>();
             services.AddTransient<IShikiRuler<List<Anime>>, ShikiImageRuler>(s => s.GetRequiredService<ShikiImageRuler>());
 

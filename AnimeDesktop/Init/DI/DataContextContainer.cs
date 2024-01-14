@@ -1,4 +1,5 @@
-﻿using AnimeDesktop.ViewModel;
+﻿using AnimeDesktop.Model.Commands.BookmarkModelUpdater;
+using AnimeDesktop.ViewModel;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace AnimeDesktop.Init.DI
@@ -12,6 +13,7 @@ namespace AnimeDesktop.Init.DI
         public static MainWindowViewModel MainWindowDataContext => _serviceProvider.GetRequiredService<MainWindowViewModel>();
         public static SearchAnimesViewModel SearchAnimesDataContext => _serviceProvider.GetRequiredService<SearchAnimesViewModel>();
         public static HeaderNavigationViewModel HeaderNavigationDataContext => _serviceProvider.GetRequiredService<HeaderNavigationViewModel>();
+        public static BookmarksCommandsContainer CommandsContainerContext => _serviceProvider.GetRequiredService<BookmarksCommandsContainer>();
 
         public void SetProvider(IServiceProvider serviceProvider) {
             _serviceProvider = serviceProvider;

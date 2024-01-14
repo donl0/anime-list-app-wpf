@@ -2,10 +2,11 @@
 using Microsoft.Extensions.DependencyInjection;
 using AnimeDesktop.Model.Commands;
 using AnimeDesktop.Model.Navigation.Commands;
+using AnimeDesktop.Model.Commands.BookmarkModelUpdater;
 
 namespace AnimeDesktop.Init.DI
 {
-    public class CommandsInitter : IDIContainerInitter
+    public class ModelInitter : IDIContainerInitter
     {
         public IServiceCollection Init(IServiceCollection services)
         {
@@ -16,6 +17,16 @@ namespace AnimeDesktop.Init.DI
             services.AddTransient<OpenAnimeWindowCommand>();
 
             services.AddTransient<SearchAnimeCommand<SearchAnimesViewModel>, SearchAnimeCommand<SearchAnimesViewModel>>();
+
+            services.AddTransient<PlannedSetterCommand>();
+            services.AddTransient<AbandonedSetterCommand>();
+            services.AddTransient<WatchedSetterCommand>();
+
+            services.AddSingleton<BookmarksCommandsContainer>(s => new BookmarksCommandsContainer(
+                s.GetRequiredService<WatchedSetterCommand>(),
+                s.GetRequiredService<PlannedSetterCommand>(),
+                s.GetRequiredService<AbandonedSetterCommand>()
+                ));
 
             return services;
         }

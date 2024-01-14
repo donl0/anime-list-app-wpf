@@ -1,10 +1,7 @@
 ﻿using AnimeDesktop.Model;
 using AnimeDesktop.Model.Commands;
 using AnimeDesktop.Servises.DSRuler;
-using AnimeDesktop.Shiki;
-using ShikimoriSharp;
 using ShikimoriSharp.Classes;
-using System.Windows.Input;
 
 namespace AnimeDesktop.ViewModel
 {
@@ -15,8 +12,6 @@ namespace AnimeDesktop.ViewModel
         private string _searchText;
 
         private event Action SearchTextUpdated;
-
-        public ICommand TestCommand { get; }
 
         public SearchAnimesViewModel(UserWatchedQuery startQuerry, OpenAnimeWindowCommand openAnime, ShikiImageRuler imageRuler, AnimeWithNameQuery querry) : base(startQuerry, openAnime, imageRuler)
         {

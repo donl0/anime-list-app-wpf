@@ -1,8 +1,6 @@
 ﻿using AnimeDesktop.Model;
-using AnimeDesktop.Servises.DSRuler;
 using AnimeDesktop.ViewModel;
 using Microsoft.Extensions.DependencyInjection;
-using AnimeDesktop.Model.Commands;
 
 namespace AnimeDesktop.Init.DI
 {
@@ -10,7 +8,6 @@ namespace AnimeDesktop.Init.DI
     {
         public IServiceCollection Init(IServiceCollection services)
         {
-
             services.AddSingleton<SearchAnimesViewModel>();
 
             services.AddSingleton<ISearchModel>(s => s.GetRequiredService<SearchAnimesViewModel>());
@@ -24,6 +21,8 @@ namespace AnimeDesktop.Init.DI
 
             services.AddSingleton<CertainAnimeViewModel>();
             services.AddSingleton<ICertainAnimeViewModel>(s => s.GetRequiredService<CertainAnimeViewModel>());
+
+            services.AddSingleton<IBookmarksModel, UserBookmarksViewModel>(s => s.GetRequiredService<UserBookmarksViewModel>());
 
             return services;
         }

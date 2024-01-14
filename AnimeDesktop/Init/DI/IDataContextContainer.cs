@@ -1,4 +1,5 @@
-﻿using AnimeDesktop.ViewModel;
+﻿using AnimeDesktop.Model.Commands.BookmarkModelUpdater;
+using AnimeDesktop.ViewModel;
 
 namespace AnimeDesktop.Init.DI
 {
@@ -9,7 +10,7 @@ namespace AnimeDesktop.Init.DI
         static SearchAnimesViewModel SearchAnimesDataContext { get; }
         static TopHundredViewModel TopHundredDataContext { get; }
         static UserBookmarksViewModel UserBookmarksDataContext { get; }
-
+        static BookmarksCommandsContainer CommandsContainerContext { get; }
         public abstract void SetProvider(IServiceProvider serviceProvider);
     }
 }
