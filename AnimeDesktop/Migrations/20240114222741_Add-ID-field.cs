@@ -5,7 +5,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 namespace AnimeDesktop.Migrations
 {
-    public partial class InitialCreate : Migration
+    public partial class AddIDfield : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -13,65 +13,53 @@ namespace AnimeDesktop.Migrations
                 name: "AbandonedAnime",
                 columns: table => new
                 {
-                    AnimeId = table.Column<int>(type: "integer", nullable: false)
+                    Id = table.Column<int>(type: "integer", nullable: false)
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
-                    Id = table.Column<int>(type: "integer", nullable: false)
+                    AnimeId = table.Column<long>(type: "bigint", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_AbandonedAnime", x => x.AnimeId);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "Anime",
-                columns: table => new
-                {
-                    Id = table.Column<int>(type: "integer", nullable: false)
-                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Anime", x => x.Id);
+                    table.PrimaryKey("PK_AbandonedAnime", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
                 name: "PlannedAnime",
                 columns: table => new
                 {
-                    AnimeId = table.Column<int>(type: "integer", nullable: false)
-                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
                     Id = table.Column<int>(type: "integer", nullable: false)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
+                    AnimeId = table.Column<long>(type: "bigint", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_PlannedAnime", x => x.AnimeId);
+                    table.PrimaryKey("PK_PlannedAnime", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
                 name: "UserRating",
                 columns: table => new
                 {
-                    AnimeId = table.Column<int>(type: "integer", nullable: false)
+                    Id = table.Column<int>(type: "integer", nullable: false)
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
-                    Id = table.Column<int>(type: "integer", nullable: false),
+                    AnimeId = table.Column<long>(type: "bigint", nullable: false),
                     Rating = table.Column<int>(type: "integer", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_UserRating", x => x.AnimeId);
+                    table.PrimaryKey("PK_UserRating", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
                 name: "WatchedAnime",
                 columns: table => new
                 {
-                    AnimeId = table.Column<int>(type: "integer", nullable: false)
-                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
                     Id = table.Column<int>(type: "integer", nullable: false)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
+                    AnimeId = table.Column<long>(type: "bigint", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_WatchedAnime", x => x.AnimeId);
+                    table.PrimaryKey("PK_WatchedAnime", x => x.Id);
                 });
         }
 
@@ -79,9 +67,6 @@ namespace AnimeDesktop.Migrations
         {
             migrationBuilder.DropTable(
                 name: "AbandonedAnime");
-
-            migrationBuilder.DropTable(
-                name: "Anime");
 
             migrationBuilder.DropTable(
                 name: "PlannedAnime");

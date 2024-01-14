@@ -11,8 +11,8 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace AnimeDesktop.Migrations
 {
     [DbContext(typeof(DBClient))]
-    [Migration("20240110150205_InitialCreate")]
-    partial class InitialCreate
+    [Migration("20240114222741_Add-ID-field")]
+    partial class AddIDfield
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -25,21 +25,21 @@ namespace AnimeDesktop.Migrations
 
             modelBuilder.Entity("AnimeDesktop.DB.Model.AbandonedAnime", b =>
                 {
-                    b.Property<int>("AnimeId")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("integer");
 
-                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("AnimeId"));
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
-                    b.Property<int>("Id")
-                        .HasColumnType("integer");
+                    b.Property<long>("AnimeId")
+                        .HasColumnType("bigint");
 
-                    b.HasKey("AnimeId");
+                    b.HasKey("Id");
 
                     b.ToTable("AbandonedAnime");
                 });
 
-            modelBuilder.Entity("AnimeDesktop.DB.Model.Anime", b =>
+            modelBuilder.Entity("AnimeDesktop.DB.Model.PlannedAnime", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -47,58 +47,45 @@ namespace AnimeDesktop.Migrations
 
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
+                    b.Property<long>("AnimeId")
+                        .HasColumnType("bigint");
+
                     b.HasKey("Id");
-
-                    b.ToTable("Anime");
-                });
-
-            modelBuilder.Entity("AnimeDesktop.DB.Model.PlannedAnime", b =>
-                {
-                    b.Property<int>("AnimeId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("integer");
-
-                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("AnimeId"));
-
-                    b.Property<int>("Id")
-                        .HasColumnType("integer");
-
-                    b.HasKey("AnimeId");
 
                     b.ToTable("PlannedAnime");
                 });
 
             modelBuilder.Entity("AnimeDesktop.DB.Model.UserRating", b =>
                 {
-                    b.Property<int>("AnimeId")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("integer");
 
-                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("AnimeId"));
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
-                    b.Property<int>("Id")
-                        .HasColumnType("integer");
+                    b.Property<long>("AnimeId")
+                        .HasColumnType("bigint");
 
                     b.Property<int>("Rating")
                         .HasColumnType("integer");
 
-                    b.HasKey("AnimeId");
+                    b.HasKey("Id");
 
                     b.ToTable("UserRating");
                 });
 
             modelBuilder.Entity("AnimeDesktop.DB.Model.WatchedAnime", b =>
                 {
-                    b.Property<int>("AnimeId")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("integer");
 
-                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("AnimeId"));
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
-                    b.Property<int>("Id")
-                        .HasColumnType("integer");
+                    b.Property<long>("AnimeId")
+                        .HasColumnType("bigint");
 
-                    b.HasKey("AnimeId");
+                    b.HasKey("Id");
 
                     b.ToTable("WatchedAnime");
                 });

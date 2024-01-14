@@ -1,7 +1,8 @@
 ﻿namespace AnimeDesktop.DB.Model
 {
-    class Anime
+    public interface IAnimeHolder
     {
         public int Id { get; set; }
+        public long AnimeId { get; set; }
     }
 }
