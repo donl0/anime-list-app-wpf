@@ -398,3 +398,4 @@ FodyWeavers.xsd
 *.sln.iml
 AnimeDesktop/DB/appsecrets.json
 AnimeDesktop/Shiki/shikisecrets.json
+AnimeDesktop/Secrets/DbConnection.cs

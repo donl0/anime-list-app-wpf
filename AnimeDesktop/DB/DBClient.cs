@@ -1,16 +1,14 @@
 ﻿using AnimeDesktop.Base;
 using AnimeDesktop.DB.Model;
+using AnimeDesktop.Secrets;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Configuration;
-using System.IO;
 
 namespace AnimeDesktop.DB
 {
-    class DBClient: DbContext, IClient<DbContext>
+    public class DBClient: DbContext, IClient<DbContext>
     {
         public DbContext Instance => this;
 
-        public DbSet<Anime> Anime { get; set; }
         public DbSet<UserRating> UserRating { get; set; }
         public DbSet<WatchedAnime> WatchedAnime { get; set;}
         public DbSet<PlannedAnime> PlannedAnime { get; set;}
@@ -19,12 +17,7 @@ namespace AnimeDesktop.DB
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            IConfigurationRoot configuration = new ConfigurationBuilder()
-                .SetBasePath(Directory.GetCurrentDirectory())
-                .AddJsonFile("DB/appsecrets.json")
-                .Build();
-
-            optionsBuilder.UseNpgsql(configuration.GetConnectionString("DefaultConnection"));
+            optionsBuilder.UseNpgsql(new DbConnection().GetConnection());
         }
     }
 }
