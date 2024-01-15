@@ -41,9 +41,7 @@ namespace AnimeDesktop.DB.Model
         {
             DbSet<T> dbSet = _client.Instance.Set<T>();
 
-            T animeToAdd = dbSet.SingleOrDefault(a => a.AnimeId == animeId);
-
-            if (animeToAdd == null)
+            if (!CheckIfAnimeExist<T>(animeId))
             {
                 T animeHolder = new T
                 {
@@ -57,6 +55,20 @@ namespace AnimeDesktop.DB.Model
             }
 
             return false;
+        }
+
+        public List<long> TakeAll<T>() where T : class, IAnimeHolder
+        {
+            DbSet<T> dbSet = _client.Instance.Set<T>();
+            List<T> allRecords = dbSet.ToList();
+
+            List<long> result = new List<long>();
+
+            foreach (T record in allRecords) { 
+                result.Add(record.AnimeId);
+            }
+
+            return result;
         }
     }
 }
