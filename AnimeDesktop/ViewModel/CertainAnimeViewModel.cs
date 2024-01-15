@@ -26,7 +26,7 @@ namespace AnimeDesktop.ViewModel
         public char AbandonedSymbol
         {
             get { return _abandonedSymbol; }
-            protected set
+            private set
             {
                 _abandonedSymbol = value;
                 OnPropertyChanged();
@@ -35,7 +35,7 @@ namespace AnimeDesktop.ViewModel
         public char WatchedSymbol
         {
             get { return _watchedSymbol; }
-            protected set
+            private set
             {
                 _watchedSymbol = value;
                 OnPropertyChanged();
@@ -44,7 +44,7 @@ namespace AnimeDesktop.ViewModel
         public char PlannedSmbol
         {
             get{ return _plannedSmbol; }
-            protected set
+            private set
             {
                 _plannedSmbol = value;
                 OnPropertyChanged();
@@ -75,17 +75,17 @@ namespace AnimeDesktop.ViewModel
         }
 
         private void OnAbandonedUpdated(char symbol) {
-            _abandonedSymbol = symbol;
+            AbandonedSymbol = symbol;
         }
 
         private void OnPlannedUpdated(char symbol)
         {
-            _plannedSmbol = symbol;
+            PlannedSmbol = symbol;
         }
 
         private void OnWatchedUpdated(char symbol)
         {
-            _watchedSymbol = symbol;
+            WatchedSymbol = symbol;
         }
 
         private void Sub() {
