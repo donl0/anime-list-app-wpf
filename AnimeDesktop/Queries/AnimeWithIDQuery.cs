@@ -4,9 +4,9 @@ using ShikimoriSharp.Classes;
 
 namespace AnimeDesktop.Model
 {
-    class AnimeIDQuery : BaseTakeDataClientPayloaded<AnimeID, ShikimoriClient, long>
+    public class AnimeWithIDQuery : BaseTakeDataClientPayloaded<AnimeID, ShikimoriClient, long>
     {
-        public AnimeIDQuery(IClient<ShikimoriClient> client) : base(client)
+        public AnimeWithIDQuery(IClient<ShikimoriClient> client) : base(client)
         {
         }
 

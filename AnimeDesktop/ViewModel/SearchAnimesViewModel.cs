@@ -14,7 +14,7 @@ namespace AnimeDesktop.ViewModel
         private string _searchText;
 
 
-        public SearchAnimesViewModel(UserWatchedQuery startQuerry, OpenAnimeWindowCommand openAnime, ShikiImageRuler imageRuler, AnimeWithNameQuery querry) : base(startQuerry, openAnime, imageRuler)
+        public SearchAnimesViewModel(ITakeDataQuery<List<Anime>> startQuerry, OpenAnimeWindowCommand openAnime, ShikiImageRuler imageRuler, AnimeWithNameQuery querry) : base(startQuerry, openAnime, imageRuler)
         {
             _querry = querry;
             SearchTextUpdated += OnSearchTextUpdated;

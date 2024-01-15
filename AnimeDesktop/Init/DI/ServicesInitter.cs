@@ -24,7 +24,7 @@ namespace AnimeDesktop.Init.DI
 
             services.AddSingleton<ShikiDescriptionRulerDirector>();
 
-            services.AddTransient<IDrawableMakerBuilder, DrawableMakerBuilder>(s => new DrawableMakerBuilder(s.GetRequiredService<AnimeIDQuery>()));
+            services.AddTransient<IDrawableMakerBuilder, DrawableMakerBuilder>(s => new DrawableMakerBuilder(s.GetRequiredService<AnimeWithIDQuery>()));
 
             return services;
         }
