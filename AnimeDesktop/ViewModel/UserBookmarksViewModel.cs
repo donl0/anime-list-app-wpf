@@ -1,11 +1,10 @@
 ﻿using AnimeDesktop.Model;
 using ShikimoriSharp.Classes;
-using ShikimoriSharp;
 using AnimeDesktop.Servises.DSRuler;
 using AnimeDesktop.Model.Commands;
 using AnimeDesktop.Model.Bookmarks;
-using AnimeDesktop.Queries.Bookmarks;
 using System.Windows.Input;
+using AnimeDesktop.DB.Model;
 
 namespace AnimeDesktop.ViewModel
 {
@@ -19,9 +18,8 @@ namespace AnimeDesktop.ViewModel
         public ICommand PlannedSetter { get; private set; }
         public ICommand AbondonedSetter { get; private set; }
 
-        public UserBookmarksViewModel( UserPlannedQuery plannedQuery, UserWatchedQuery watchedQuery, UserAbandonedQuerry abandonedQuerry, BaseTakeDataQuery<List<Anime>, ShikimoriClient> startQuerry, OpenAnimeWindowCommand openAnime, IShikiRuler<List<Anime>> imageRuler) : base(startQuerry, openAnime, imageRuler)
+        public UserBookmarksViewModel(TakeAllFromUserBookmark<PlannedAnime> plannedQuery, TakeAllFromUserBookmark<WatchedAnime> watchedQuery, TakeAllFromUserBookmark<AbandonedAnime> abandonedQuerry, OpenAnimeWindowCommand openAnime, IShikiRuler<List<Anime>> imageRuler) : base(watchedQuery, openAnime, imageRuler)
         {
-
             _watchedQuery = watchedQuery;
             _plannedQuery = plannedQuery;
             _abandonedQuery = abandonedQuerry;
