@@ -8,7 +8,6 @@ namespace AnimeDesktop.Init.DI
     {
         public IServiceCollection Init(IServiceCollection services)
         {
-
             services.AddSingleton(s => new MainWindow()
             {
                 DataContext = s.GetRequiredService<MainWindowViewModel>()

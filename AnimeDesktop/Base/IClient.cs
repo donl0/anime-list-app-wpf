@@ -1,6 +1,4 @@
-﻿using ShikimoriSharp;
-
-namespace AnimeDesktop.Base
+﻿namespace AnimeDesktop.Base
 {
     public interface IClient<T>
     {

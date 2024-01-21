@@ -3,7 +3,7 @@ using AnimeDesktop.Model.Navigation;
 
 namespace AnimeDesktop.ViewModel
 {
-    public class MainWindowViewModel : NotifyPropertyChangeViewModel
+    public class MainWindowViewModel : NotifyPropertyChangeHandler
     {
         private readonly INavigationStore _navigationStore;
 
