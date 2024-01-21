@@ -1,17 +1,25 @@
 ﻿using AnimeDesktop.Base;
 using AnimeDesktop.Model;
 using AnimeDesktop.Servises.DSRuler;
-using ShikimoriSharp;
 using ShikimoriSharp.Classes;
 using System.Windows.Input;
 
 namespace AnimeDesktop.ViewModel
 {
-    public class BaseAnimeListViewModel:NotifyPropertyChangeViewModel
+    public class BaseAnimeListViewModel:NotifyPropertyChangeHandler
     {
         private readonly IShikiRuler<List<Anime>> _imageRuler;
 
-        public NotifyTaskCompletion<List<Anime>> Values { get; private set; }
+        private List<Anime> _values;
+
+        public List<Anime> Values
+        {
+            get { return _values; }
+            set {
+                _values = value;
+                OnPropertyChanged();
+                }
+        }
         public ICommand OpenAnime { get; }
 
         public BaseAnimeListViewModel(ITakeDataQuery<List<Anime>> startQuerry, ICommand openAnime, IShikiRuler<List<Anime>> imageRuler) {
@@ -22,7 +30,7 @@ namespace AnimeDesktop.ViewModel
             UpdateWithQuerry(startQuerry);
         }
 
-        protected void UpdateWithQuerry(ITakeDataQuery<List<Anime>> querry) {
+        protected async void UpdateWithQuerry(ITakeDataQuery<List<Anime>> querry) {
             Update(querry.TakeData());
         }
 
@@ -30,10 +38,12 @@ namespace AnimeDesktop.ViewModel
             Update(querry.TakeData(payload));
         }
 
-        private void Update(Task<List<Anime>> querryTakenData) {
-            Action<List<Anime>> onTaskCompleted = (animes) => _imageRuler.Rule(animes);
+        private async void Update(Task<List<Anime>> querryTakenData) {
 
-            Values = new NotifyTaskCompletion<List<Anime>>(Task.Run(() => querryTakenData), onTaskCompleted);
+            List<Anime> animes = await Task.Run(() => querryTakenData);
+            _imageRuler.Rule(animes);
+            Values = animes;
         }
     }
 }
+    

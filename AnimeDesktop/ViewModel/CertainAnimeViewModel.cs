@@ -1,97 +1,46 @@
 ﻿using AnimeDesktop.Base;
 using AnimeDesktop.DataStructure;
-using AnimeDesktop.DB.Model;
-using AnimeDesktop.Model.SymbolJob;
+using AnimeDesktop.Model;
 using AnimeDesktop.Servises.DrawableMarkerBuilder;
 using AnimeDesktop.Servises.DSRuler;
 using AnimeDesktop.Servises.DSRuler.Description;
 
 namespace AnimeDesktop.ViewModel
 {
-    public class CertainAnimeViewModel : NotifyPropertyChangeViewModel, ICertainAnimeViewModel
+    public class CertainAnimeViewModel : NotifyPropertyChangeHandler, ICertainAnimeViewModel
     {
         private readonly IShikiRuler<AnimeDrawable> _descriptionRuler;
         private readonly IDrawableMakerBuilder _builder;
 
-        private char _abandonedSymbol;
-        private char _watchedSymbol;
-        private char _plannedSmbol;
+        private AnimeDrawable _value;
 
-        public SymbolBookmarkModel<AbandonedAnime> AbandonedModel { get; private set; }
-        public SymbolBookmarkModel<WatchedAnime> WatchedModel { get; private set; }
-        public SymbolBookmarkModel<PlannedAnime> PlannedModel { get; private set; }
-
-        public NotifyTaskCompletion<AnimeDrawable> Value { get; private set; }
-
-        public char AbandonedSymbol
-        {
-            get { return _abandonedSymbol; }
+        public AnimeDrawable Value {
+            get { 
+                return _value;
+            } 
             private set
             {
-                _abandonedSymbol = value;
+                _value = value;
                 OnPropertyChanged();
             }
         }
-        public char WatchedSymbol
-        {
-            get { return _watchedSymbol; }
-            private set
-            {
-                _watchedSymbol = value;
-                OnPropertyChanged();
-            }
-        }
-        public char PlannedSmbol
-        {
-            get{ return _plannedSmbol; }
-            private set
-            {
-                _plannedSmbol = value;
-                OnPropertyChanged();
-            }
-        }
+        public ISymbolBookmarkHolder SymbolBookmarkHolder { get; private set; }
 
-        public CertainAnimeViewModel(IDrawableMakerBuilder builder, ShikiDescriptionRulerDirector descriptionRuler, SymbolBookmarkModel<AbandonedAnime> abandonedModel, SymbolBookmarkModel<WatchedAnime> watchedModel, SymbolBookmarkModel<PlannedAnime> plannedModel)
+        public CertainAnimeViewModel(IDrawableMakerBuilder builder, ShikiDescriptionRulerDirector descriptionRuler, ISymbolBookmarkHolder symbolBookmarkHolder)
         {
             _builder = builder;
             _descriptionRuler = descriptionRuler;
-
-            AbandonedModel = abandonedModel;
-            WatchedModel = watchedModel;
-            PlannedModel = plannedModel;
-
-            Sub();
+            SymbolBookmarkHolder = symbolBookmarkHolder;
         }
 
-        public void Render(ShikimoriSharp.Classes.Anime anime)
+        public async void Render(ShikimoriSharp.Classes.Anime anime)
         {
-            AbandonedModel.Update(anime.Id);
-            WatchedModel.Update(anime.Id);
-            PlannedModel.Update(anime.Id);
+            SymbolBookmarkHolder.UpdateAddInListSymbols(anime);
 
-            Action<AnimeDrawable> onTaskCompleted = (anime) => _descriptionRuler.Rule(anime);
+            AnimeDrawable animeDrawable = await Task.Run(() => _builder.ToDrawable(anime));
+            _descriptionRuler.Rule(animeDrawable);
 
-            Value = new NotifyTaskCompletion<AnimeDrawable>(Task.Run(async () => await _builder.ToDrawable(anime)), onTaskCompleted);
-        }
-
-        private void OnAbandonedUpdated(char symbol) {
-            AbandonedSymbol = symbol;
-        }
-
-        private void OnPlannedUpdated(char symbol)
-        {
-            PlannedSmbol = symbol;
-        }
-
-        private void OnWatchedUpdated(char symbol)
-        {
-            WatchedSymbol = symbol;
-        }
-
-        private void Sub() {
-            AbandonedModel.SymbolUpdated += OnAbandonedUpdated;
-            WatchedModel.SymbolUpdated += OnWatchedUpdated;
-            PlannedModel.SymbolUpdated += OnPlannedUpdated;
+            Value = animeDrawable;
         }
     }
 }
