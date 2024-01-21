@@ -26,30 +26,30 @@
         <Grid Grid.Column="0" Grid.Row="0" Grid.RowSpan="2" HorizontalAlignment="Left" VerticalAlignment="Top">
             <StackPanel Orientation="Vertical">
 
-                <Image Source="{Binding Value.Result.Image}" Height="350px" Width="250px"/>
+                <Image Source="{Binding Value.Image}" Height="350px" Width="250px"/>
 
-                <TextBlock HorizontalAlignment="Center" Grid.ColumnSpan="2" FontWeight="Bold" FontSize="16" Text="{Binding Value.Result.Name}" TextWrapping="Wrap" TextTrimming="WordEllipsis"></TextBlock>
+                <TextBlock HorizontalAlignment="Center" Grid.ColumnSpan="2" FontWeight="Bold" FontSize="16" Text="{Binding Value.Name}" TextWrapping="Wrap" TextTrimming="WordEllipsis"></TextBlock>
 
                 <StackPanel Height="132" Background="#FFB05F" Margin="8" VerticalAlignment="Top">
                     <Grid Background="#FF8100" Height="30px" Margin="6,3,6,1">
                         <TextBlock Text="+List" FontWeight="Bold" FontSize="25" HorizontalAlignment="Center"></TextBlock>
                     </Grid>
 
-                    <Button Height="30px" Background="#FF8100" BorderBrush="Transparent" Margin="6,1,6,1"  Command="{Binding WatchedModel}" CommandParameter="{Binding Value.Result}">
+                    <Button Height="30px" Background="#FF8100" BorderBrush="Transparent" Margin="6,1,6,1"  Command="{Binding SymbolBookmarkHolder.WatchedModel}" CommandParameter="{Binding Value}">
                         <TextBlock  FontWeight="Bold" FontSize="22">
-                        <Run Text="{Binding WatchedSymbol, Mode=OneWay}"></Run>
+                        <Run Text="{Binding SymbolBookmarkHolder.WatchedSymbol, Mode=OneWay}"></Run>
                         <Run Text="Watched"></Run>
                         </TextBlock>
                     </Button>
-                    <Button Height="30px" Background="#FF8100" BorderBrush="Transparent" Margin="6,1,6,1" Command="{Binding AbandonedModel}" CommandParameter="{Binding Value.Result}">
+                    <Button Height="30px" Background="#FF8100" BorderBrush="Transparent" Margin="6,1,6,1" Command="{Binding SymbolBookmarkHolder.AbandonedModel}" CommandParameter="{Binding Value}">
                         <TextBlock  FontWeight="Bold" FontSize="22">
-                        <Run Text="{Binding AbandonedSymbol, Mode=OneWay}"></Run>
+                        <Run Text="{Binding SymbolBookmarkHolder.AbandonedSymbol, Mode=OneWay}"></Run>
                         <Run Text="Abandoned"></Run>
                         </TextBlock>
                     </Button>
-                    <Button Height="30px" Background="#FF8100" BorderBrush="Transparent" Margin="6,1,6,1" Command="{Binding PlannedModel}" CommandParameter="{Binding Value.Result}">
+                    <Button Height="30px" Background="#FF8100" BorderBrush="Transparent" Margin="6,1,6,1" Command="{Binding SymbolBookmarkHolder.PlannedModel}" CommandParameter="{Binding Value}">
                         <TextBlock  FontWeight="Bold" FontSize="22">
-                        <Run Text="{Binding PlannedSmbol, Mode=OneWay}"></Run>
+                        <Run Text="{Binding SymbolBookmarkHolder.PlannedSmbol, Mode=OneWay}"></Run>
                         <Run Text="Planned"></Run>
                         </TextBlock>
                     </Button>
@@ -63,11 +63,11 @@
                 </Grid>
                 <StackPanel Orientation="Horizontal">
                     <TextBlock Text="Episodes: " FontWeight="Bold" FontSize="19" HorizontalAlignment="Center"></TextBlock>
-                    <TextBlock  Text="{Binding Value.Result.Episodes}" FontWeight="Bold" FontSize="18" HorizontalAlignment="Center"></TextBlock>
+                    <TextBlock  Text="{Binding Value.Episodes}" FontWeight="Bold" FontSize="18" HorizontalAlignment="Center"></TextBlock>
                 </StackPanel>
                 <WrapPanel Orientation="Horizontal" Margin="0,10,0,0">
                     <TextBlock Text="Genres: " FontWeight="Bold" FontSize="19" HorizontalAlignment="Left"></TextBlock>
-                    <TextBlock Text="{Binding Value.Result.Genres}" FontWeight="Bold" FontSize="18" HorizontalAlignment="Center" TextWrapping="Wrap"></TextBlock>
+                    <TextBlock Text="{Binding Value.Genres}" FontWeight="Bold" FontSize="18" HorizontalAlignment="Center" TextWrapping="Wrap"></TextBlock>
                 </WrapPanel>
             </StackPanel>
 
@@ -79,7 +79,7 @@
                     <TextBlock Text="Description" FontWeight="Bold" FontSize="22" HorizontalAlignment="Center"></TextBlock>
                 </Grid>
 
-                <TextBlock Text="{Binding Value.Result.Description}" FontWeight="Bold" FontSize="18" HorizontalAlignment="Left" TextWrapping="Wrap"></TextBlock>
+                <TextBlock Text="{Binding Value.Description}" FontWeight="Bold" FontSize="18" HorizontalAlignment="Left" TextWrapping="Wrap"></TextBlock>
             </StackPanel>
         </Grid>
 
@@ -90,7 +90,7 @@
                 </Grid>
 
                 <Grid>
-                    <TextBlock Text="{Binding Value.Result.Rating}" FontWeight="Bold" FontSize="18" HorizontalAlignment="Center"></TextBlock>
+                    <TextBlock Text="{Binding Value.Rating}" FontWeight="Bold" FontSize="18" HorizontalAlignment="Center"></TextBlock>
                 </Grid>
             </StackPanel>
 
