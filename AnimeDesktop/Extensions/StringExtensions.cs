@@ -6,7 +6,10 @@ namespace AnimeDesktop.Extensions
     {
         public static string RemoveString(this string ruleObject, string pattern)
         {
-            ruleObject = Regex.Replace(ruleObject, pattern, "");
+            if (ruleObject != null) {
+               ruleObject = Regex.Replace(ruleObject, pattern, "");
+            }
+
             return ruleObject;
         }
     }
