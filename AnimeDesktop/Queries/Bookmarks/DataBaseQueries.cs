@@ -12,44 +12,44 @@ namespace AnimeDesktop.DB.Model
             _client = client;
         }
 
-        public bool CheckIfAnimeExist<T>(long id) where T : class, IAnimeHolder
+        public async Task<bool> CheckIfAnimeExist<T>(long id) where T : class, IAnimeHolder
         {
             DbSet<T> dbSet = _client.Instance.Set<T>();
 
-            bool exists = dbSet.Any(a => a.AnimeId == id);
+            bool exists = await dbSet.AnyAsync(a => a.AnimeId == id);
 
             return exists;
         }
 
-        public bool TryRemoveAnime<T>(long id) where T : class, IAnimeHolder
+        public async Task<bool> TryRemoveAnime<T>(long id) where T : class, IAnimeHolder
         {
             DbSet<T> dbSet = _client.Instance.Set<T>();
 
-            T animeToDelete = dbSet.SingleOrDefault(a => a.AnimeId == id);
+            T animeToDelete = await dbSet.SingleOrDefaultAsync(a => a.AnimeId == id);
 
             if (animeToDelete != null)
             {
                 dbSet.Remove(animeToDelete);
-                _client.Instance.SaveChanges();
+                await _client.Instance.SaveChangesAsync();
                 return true;
             }
 
             return false;
         }
 
-        public bool TryAddAnime<T>(long animeId) where T : class, IAnimeHolder, new()
+        public async Task<bool> TryAddAnimeAsync<T>(long animeId) where T : class, IAnimeHolder, new()
         {
             DbSet<T> dbSet = _client.Instance.Set<T>();
 
-            if (!CheckIfAnimeExist<T>(animeId))
+            if (!await CheckIfAnimeExist<T>(animeId))
             {
                 T animeHolder = new T
                 {
                     AnimeId = animeId
                 };
 
-                dbSet.Add(animeHolder);
-                _client.Instance.SaveChanges();
+                await dbSet.AddAsync(animeHolder);
+                await _client.Instance.SaveChangesAsync();
 
                 return true;
             }
@@ -57,10 +57,10 @@ namespace AnimeDesktop.DB.Model
             return false;
         }
 
-        public List<long> TakeAll<T>() where T : class, IAnimeHolder
+        public async Task<List<long>> TakeAll<T>() where T : class, IAnimeHolder
         {
             DbSet<T> dbSet = _client.Instance.Set<T>();
-            List<T> allRecords = dbSet.ToList();
+            List<T> allRecords = await dbSet.ToListAsync();
 
             List<long> result = new List<long>();
 

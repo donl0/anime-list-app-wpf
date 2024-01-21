@@ -19,7 +19,7 @@ namespace AnimeDesktop.Model.Bookmarks
 
         public async override Task<List<Anime>> TakeData()
         {
-            List<long> animesId = _dbQuerry.TakeAll<T>();
+            List<long> animesId = await _dbQuerry.TakeAll<T>();
 
             List<Anime> animes = new List<Anime>();
 
