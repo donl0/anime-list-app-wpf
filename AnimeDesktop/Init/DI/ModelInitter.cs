@@ -5,6 +5,7 @@ using AnimeDesktop.Model.Navigation.Commands;
 using AnimeDesktop.Model.Commands.BookmarkModelUpdater;
 using AnimeDesktop.DB.Model;
 using AnimeDesktop.Model.SymbolJob;
+using AnimeDesktop.Model;
 
 namespace AnimeDesktop.Init.DI
 {
@@ -23,6 +24,8 @@ namespace AnimeDesktop.Init.DI
             services.AddTransient<PlannedSetterCommand>();
             services.AddTransient<AbandonedSetterCommand>();
             services.AddTransient<WatchedSetterCommand>();
+
+            services.AddSingleton<ISymbolBookmarkHolder, SymbolBookmarkHolder>();
 
             services.AddSingleton<BookmarksCommandsContainer>(s => new BookmarksCommandsContainer(
                 s.GetRequiredService<WatchedSetterCommand>(),
