@@ -31,14 +31,14 @@ namespace AnimeDesktop.ViewModel
         }
 
         protected async void UpdateWithQuerry(ITakeDataQuery<List<Anime>> querry) {
-            Update(querry.TakeData());
+            UpdateAsync(querry.TakeDataAsync());
         }
 
         protected virtual void UpdateWithQuerry<TP>(ITakeDataQueryPayloaded<List<Anime>, TP> querry, TP payload)  {
-            Update(querry.TakeData(payload));
+            UpdateAsync(querry.TakeDataAsync(payload));
         }
 
-        private async void Update(Task<List<Anime>> querryTakenData) {
+        private async void UpdateAsync(Task<List<Anime>> querryTakenData) {
 
             List<Anime> animes = await Task.Run(() => querryTakenData);
             _imageRuler.Rule(animes);

@@ -11,7 +11,7 @@ namespace AnimeDesktop.Model
         {
         }
 
-        public async override Task<List<Anime>> TakeData()
+        public async override Task<List<Anime>> TakeDataAsync()
         {
             var clientInstance = Client;
 

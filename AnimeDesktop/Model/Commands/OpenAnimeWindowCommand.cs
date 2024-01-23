@@ -24,7 +24,7 @@ namespace AnimeDesktop.Model.Commands
         {
             Anime selectedItem = parameter as Anime;
 
-            _animeViewModel.Render(selectedItem);
+            _animeViewModel.RenderAsync(selectedItem);
             _animeView.Show();
         }
     }

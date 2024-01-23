@@ -9,6 +9,6 @@ namespace AnimeDesktop.Model
         {
         }
 
-        public abstract Task<TDS> TakeData(Payload payload);
+        public abstract Task<TDS> TakeDataAsync(Payload payload);
     }
 }

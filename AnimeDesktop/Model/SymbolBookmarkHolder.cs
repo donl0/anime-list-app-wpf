@@ -52,11 +52,11 @@ namespace AnimeDesktop.Model
             Sub();
         }
 
-        public async void UpdateAddInListSymbols(ShikimoriSharp.Classes.Anime anime)
+        public async void UpdateAddInListSymbolsAsync(ShikimoriSharp.Classes.Anime anime)
         {
-            await AbandonedModel.Update(anime.Id);
-            await WatchedModel.Update(anime.Id);
-            await PlannedModel.Update(anime.Id);
+            await AbandonedModel.UpdateAsync(anime.Id);
+            await WatchedModel.UpdateAsync(anime.Id);
+            await PlannedModel.UpdateAsync(anime.Id);
         }
 
         private void OnAbandonedUpdated(char symbol)

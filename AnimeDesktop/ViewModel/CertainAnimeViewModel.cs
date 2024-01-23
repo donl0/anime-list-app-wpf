@@ -33,11 +33,11 @@ namespace AnimeDesktop.ViewModel
             SymbolBookmarkHolder = symbolBookmarkHolder;
         }
 
-        public async void Render(ShikimoriSharp.Classes.Anime anime)
+        public async void RenderAsync(ShikimoriSharp.Classes.Anime anime)
         {
-            SymbolBookmarkHolder.UpdateAddInListSymbols(anime);
+            SymbolBookmarkHolder.UpdateAddInListSymbolsAsync(anime);
 
-            AnimeDrawable animeDrawable = await Task.Run(() => _builder.ToDrawable(anime));
+            AnimeDrawable animeDrawable = await Task.Run(() => _builder.ToDrawableAsync(anime));
             _descriptionRuler.Rule(animeDrawable);
 
             Value = animeDrawable;

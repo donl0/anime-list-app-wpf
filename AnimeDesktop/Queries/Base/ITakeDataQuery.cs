@@ -2,6 +2,6 @@
 {
     public interface ITakeDataQuery<T>
     {
-        public Task<T> TakeData();
+        public Task<T> TakeDataAsync();
     }
 }

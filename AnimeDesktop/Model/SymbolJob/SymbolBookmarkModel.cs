@@ -24,19 +24,19 @@ namespace AnimeDesktop.Model.SymbolJob
 
             long id = item.Id;
 
-            if (!await _dataBaseQueries.CheckIfAnimeExist<T>(id))
+            if (!await _dataBaseQueries.CheckIfAnimeExistAsync<T>(id))
             {
                 if (await _dataBaseQueries.TryAddAnimeAsync<T>(id))
                     SymbolUpdated?.Invoke(_existSymbol);
             }
             else {
-                if (await _dataBaseQueries.TryRemoveAnime<T>(id))
+                if (await _dataBaseQueries.TryRemoveAnimeAsync<T>(id))
                     SymbolUpdated?.Invoke(_nonExistSymbol);
             }
         }
 
-        public async Task Update(long id) {
-            if (!await _dataBaseQueries.CheckIfAnimeExist<T>(id))
+        public async Task UpdateAsync(long id) {
+            if (!await _dataBaseQueries.CheckIfAnimeExistAsync<T>(id))
                 SymbolUpdated?.Invoke(_nonExistSymbol);
             else
                 SymbolUpdated?.Invoke(_existSymbol);

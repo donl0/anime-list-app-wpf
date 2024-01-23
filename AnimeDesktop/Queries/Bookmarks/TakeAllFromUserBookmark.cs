@@ -17,14 +17,14 @@ namespace AnimeDesktop.Model.Bookmarks
             _animeIDQuery = animeIDQuery;
         }
 
-        public async override Task<List<Anime>> TakeData()
+        public async override Task<List<Anime>> TakeDataAsync()
         {
-            List<long> animesId = await _dbQuerry.TakeAll<T>();
+            List<long> animesId = await _dbQuerry.TakeAllAsync<T>();
 
             List<Anime> animes = new List<Anime>();
 
             foreach (long id in animesId) {
-                AnimeID animeID = await _animeIDQuery.TakeData(id);
+                AnimeID animeID = await _animeIDQuery.TakeDataAsync(id);
 
                 animeID.MakeAnimeType(out Anime anime);
 

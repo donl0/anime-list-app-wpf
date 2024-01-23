@@ -4,6 +4,6 @@ namespace AnimeDesktop.ViewModel
 {
     public interface ICertainAnimeViewModel
     {
-        void Render(Anime anime);
+        void RenderAsync(Anime anime);
     }
 }

@@ -5,6 +5,6 @@ namespace AnimeDesktop.Servises.DrawableMarkerBuilder
 {
     public interface IDrawableMakerBuilder
     {
-        Task<AnimeDrawable> ToDrawable(Anime anime);
+        Task<AnimeDrawable> ToDrawableAsync(Anime anime);
     }
 }

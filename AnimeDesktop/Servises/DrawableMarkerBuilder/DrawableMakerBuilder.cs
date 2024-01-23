@@ -14,9 +14,9 @@ namespace AnimeDesktop.Servises.DrawableMarkerBuilder
             _animeIDModel = animeIDModel;
         }
 
-        public async Task<AnimeDrawable> ToDrawable(Anime anime)
+        public async Task<AnimeDrawable> ToDrawableAsync(Anime anime)
         {
-            AnimeID animeID = await _animeIDModel.TakeData(anime.Id);
+            AnimeID animeID = await _animeIDModel.TakeDataAsync(anime.Id);
 
             AnimeDrawable drawable = new AnimeDrawable(anime.Id, animeID.Name, ToGenresString(animeID.Genres), animeID.Description, anime.Image.Preview, animeID.Episodes, animeID.Score);
 

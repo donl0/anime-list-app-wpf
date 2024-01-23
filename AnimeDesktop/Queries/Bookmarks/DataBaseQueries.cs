@@ -12,7 +12,7 @@ namespace AnimeDesktop.DB.Model
             _client = client;
         }
 
-        public async Task<bool> CheckIfAnimeExist<T>(long id) where T : class, IAnimeHolder
+        public async Task<bool> CheckIfAnimeExistAsync<T>(long id) where T : class, IAnimeHolder
         {
             DbSet<T> dbSet = _client.Instance.Set<T>();
 
@@ -21,7 +21,7 @@ namespace AnimeDesktop.DB.Model
             return exists;
         }
 
-        public async Task<bool> TryRemoveAnime<T>(long id) where T : class, IAnimeHolder
+        public async Task<bool> TryRemoveAnimeAsync<T>(long id) where T : class, IAnimeHolder
         {
             DbSet<T> dbSet = _client.Instance.Set<T>();
 
@@ -41,7 +41,7 @@ namespace AnimeDesktop.DB.Model
         {
             DbSet<T> dbSet = _client.Instance.Set<T>();
 
-            if (!await CheckIfAnimeExist<T>(animeId))
+            if (!await CheckIfAnimeExistAsync<T>(animeId))
             {
                 T animeHolder = new T
                 {
@@ -57,7 +57,7 @@ namespace AnimeDesktop.DB.Model
             return false;
         }
 
-        public async Task<List<long>> TakeAll<T>() where T : class, IAnimeHolder
+        public async Task<List<long>> TakeAllAsync<T>() where T : class, IAnimeHolder
         {
             DbSet<T> dbSet = _client.Instance.Set<T>();
             List<T> allRecords = await dbSet.ToListAsync();

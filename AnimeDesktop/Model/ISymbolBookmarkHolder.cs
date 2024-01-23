@@ -8,6 +8,6 @@ namespace AnimeDesktop.Model
     {
         SymbolBookmarkModel<AbandonedAnime> AbandonedModel { get; }
 
-        void UpdateAddInListSymbols(Anime anime);
+        void UpdateAddInListSymbolsAsync(Anime anime);
     }
 }
