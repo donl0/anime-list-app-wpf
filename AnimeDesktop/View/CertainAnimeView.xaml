@@ -8,6 +8,18 @@
         Title="CertainAnimeView" Height="540" Width="900"
         Topmost="True">
 
+    <Window.Resources>
+        <Style TargetType="Button" BasedOn="{StaticResource BaseBackgroundButton}">
+            <Setter Property="BorderBrush" Value="Transparent"/>
+            <Setter Property="Margin" Value="6,1,6,1"/>
+        </Style>
+        <Style TargetType="TextBlock">
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="FontSize" Value="22"/>
+            <Setter Property="HorizontalAlignment" Value="Center"/>
+        </Style>
+    </Window.Resources>
+    
 
 
     <Grid>
@@ -31,24 +43,24 @@
                 <TextBlock HorizontalAlignment="Center" Grid.ColumnSpan="2" FontWeight="Bold" FontSize="16" Text="{Binding Value.Name}" TextWrapping="Wrap" TextTrimming="WordEllipsis"></TextBlock>
 
                 <StackPanel Height="132" Background="#FFB05F" Margin="8" VerticalAlignment="Top">
-                    <Grid Background="#FF8100" Height="30px" Margin="6,3,6,1">
+                    <Grid Style="{StaticResource BaseBackgroundGrid}" Height="30px" Margin="6,3,6,1">
                         <TextBlock Text="+List" FontWeight="Bold" FontSize="25" HorizontalAlignment="Center"></TextBlock>
                     </Grid>
 
-                    <Button Height="30px" Background="#FF8100" BorderBrush="Transparent" Margin="6,1,6,1"  Command="{Binding SymbolBookmarkHolder.WatchedModel}" CommandParameter="{Binding Value}">
-                        <TextBlock  FontWeight="Bold" FontSize="22">
+                    <Button Height="30px" Command="{Binding SymbolBookmarkHolder.WatchedModel}" CommandParameter="{Binding Value}">
+                        <TextBlock>
                         <Run Text="{Binding SymbolBookmarkHolder.WatchedSymbol, Mode=OneWay}"></Run>
                         <Run Text="Watched"></Run>
                         </TextBlock>
                     </Button>
-                    <Button Height="30px" Background="#FF8100" BorderBrush="Transparent" Margin="6,1,6,1" Command="{Binding SymbolBookmarkHolder.AbandonedModel}" CommandParameter="{Binding Value}">
-                        <TextBlock  FontWeight="Bold" FontSize="22">
+                    <Button Height="30px" BorderBrush="Transparent" Margin="6,1,6,1" Command="{Binding SymbolBookmarkHolder.AbandonedModel}" CommandParameter="{Binding Value}">
+                        <TextBlock>
                         <Run Text="{Binding SymbolBookmarkHolder.AbandonedSymbol, Mode=OneWay}"></Run>
                         <Run Text="Abandoned"></Run>
                         </TextBlock>
                     </Button>
-                    <Button Height="30px" Background="#FF8100" BorderBrush="Transparent" Margin="6,1,6,1" Command="{Binding SymbolBookmarkHolder.PlannedModel}" CommandParameter="{Binding Value}">
-                        <TextBlock  FontWeight="Bold" FontSize="22">
+                    <Button Height="30px" BorderBrush="Transparent" Margin="6,1,6,1" Command="{Binding SymbolBookmarkHolder.PlannedModel}" CommandParameter="{Binding Value}">
+                        <TextBlock>
                         <Run Text="{Binding SymbolBookmarkHolder.PlannedSmbol, Mode=OneWay}"></Run>
                         <Run Text="Planned"></Run>
                         </TextBlock>
@@ -58,39 +70,38 @@
         </Grid>
         <Grid Grid.Column="1">
             <StackPanel Orientation="Vertical" Margin="5,0,5,0">
-                <Grid Background="#FF8100" Height="30px">
-                    <TextBlock Text="Info" FontWeight="Bold" FontSize="22" HorizontalAlignment="Center"></TextBlock>
+                <Grid Style="{StaticResource BaseBackgroundGrid}" Height="30px">
+                    <TextBlock Text="Info"></TextBlock>
                 </Grid>
                 <StackPanel Orientation="Horizontal">
-                    <TextBlock Text="Episodes: " FontWeight="Bold" FontSize="19" HorizontalAlignment="Center"></TextBlock>
-                    <TextBlock  Text="{Binding Value.Episodes}" FontWeight="Bold" FontSize="18" HorizontalAlignment="Center"></TextBlock>
+                    <TextBlock Text="Episodes: " FontSize="19"></TextBlock>
+                    <TextBlock  Text="{Binding Value.Episodes}" FontSize="18" ></TextBlock>
                 </StackPanel>
                 <WrapPanel Orientation="Horizontal" Margin="0,10,0,0">
-                    <TextBlock Text="Genres: " FontWeight="Bold" FontSize="19" HorizontalAlignment="Left"></TextBlock>
-                    <TextBlock Text="{Binding Value.Genres}" FontWeight="Bold" FontSize="18" HorizontalAlignment="Center" TextWrapping="Wrap"></TextBlock>
+                    <TextBlock Text="Genres: " FontSize="19" HorizontalAlignment="Left"></TextBlock>
+                    <TextBlock Text="{Binding Value.Genres}" FontSize="18"  TextWrapping="Wrap"></TextBlock>
                 </WrapPanel>
             </StackPanel>
-
 
         </Grid>
         <Grid Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2" VerticalAlignment="Top" Margin="5,60,5,0">
             <StackPanel Orientation="Vertical">
-                <Grid Background="#FF8100" Height="30px">
-                    <TextBlock Text="Description" FontWeight="Bold" FontSize="22" HorizontalAlignment="Center"></TextBlock>
+                <Grid Style="{StaticResource BaseBackgroundGrid}" Height="30px">
+                    <TextBlock Text="Description" FontSize="22" ></TextBlock>
                 </Grid>
 
-                <TextBlock Text="{Binding Value.Description}" FontWeight="Bold" FontSize="18" HorizontalAlignment="Left" TextWrapping="Wrap"></TextBlock>
+                <TextBlock Text="{Binding Value.Description}" FontSize="18" HorizontalAlignment="Left" TextWrapping="Wrap"></TextBlock>
             </StackPanel>
         </Grid>
 
         <Grid Grid.Column="3" Grid.Row="0">
             <StackPanel Orientation="Vertical">
-                <Grid Background="#FF8100" Height="30px">
-                    <TextBlock Text="Rating" FontWeight="Bold" FontSize="22" HorizontalAlignment="Center"></TextBlock>
+                <Grid Style="{StaticResource BaseBackgroundGrid}" Height="30px">
+                    <TextBlock Text="Rating" FontSize="22"></TextBlock>
                 </Grid>
 
                 <Grid>
-                    <TextBlock Text="{Binding Value.Rating}" FontWeight="Bold" FontSize="18" HorizontalAlignment="Center"></TextBlock>
+                    <TextBlock Text="{Binding Value.Rating}" FontSize="18"></TextBlock>
                 </Grid>
             </StackPanel>
 
